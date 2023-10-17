@@ -17,7 +17,6 @@ export class ProductManager {
         this.path = path
     }
     
-    
     async getProducts() {
         if (this.productos.length == 0){
             let fileExists = fs.existsSync(this.path)
