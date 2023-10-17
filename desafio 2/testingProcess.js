@@ -1,7 +1,7 @@
 import { ProductManager } from "./ProductManager.js"
 
 ///PROCESO DE TESTING
-const productManagerInstance = new ProductManager()
+const productManagerInstance = new ProductManager("productos.json")
 let producto
 let productoPorId
 let productoRepetido
@@ -15,6 +15,12 @@ if (producto){
     console.log(producto)
 }
 
+// Agrega un producto
+producto = await  productManagerInstance.addProduct("Producto prueba 2", "Este es un producto prueba 2", 200, "Sin imagen", "abc124", 25)
+if (producto){
+    console.log('Producto Agregado')
+    console.log(producto)
+}
 // Obtiene todos los Productos
 console.log("2 - Obtener Productos:")
 console.log(await productManagerInstance.getProducts())
@@ -51,10 +57,37 @@ if (producto){
     console.log(producto)
 }
 
-console.log("7 - Modificar Producto:")
-// Agrega un producto
+console.log("7 - Eliminar Producto:")
+// eliminar un producto
+producto = await productManagerInstance.deleteProduct("abc123")
+if (producto){
+    console.log('Producto eliminado')
+    console.log(producto)
+}
+
+console.log("8 - Modificar Producto no existente:")
+// Modificar un producto
 producto = await productManagerInstance.updateProduct("Producto prueba", "Este es un producto prueba modificado", 200, "Sin imagen", "abc123", 25)
 if (producto){
     console.log('Producto modificado')
     console.log(producto)
 }
+
+console.log("9 - Modificar Producto:")
+// Modificar un producto
+producto = await productManagerInstance.updateProduct("Producto prueba 2", "Este es un producto prueba 2 modificado", 200, "Sin imagen", "abc124", 25)
+if (producto){
+    console.log('Producto modificado')
+    console.log(producto)
+}
+
+console.log("10 - Agregar Producto:")
+// Agrega un producto
+producto = await  productManagerInstance.addProduct("Producto prueba 3", "Este es un producto prueba 3", 200, "Sin imagen", "abc125", 25)
+if (producto){
+    console.log('Producto Agregado')
+    console.log(producto)
+}
+// Obtiene todos los Productos
+console.log("11 - Obtener Productos:")
+console.log(await productManagerInstance.getProducts())
