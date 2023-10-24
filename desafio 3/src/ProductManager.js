@@ -1,4 +1,9 @@
 import * as fs from "fs"
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 class Product {
     constructor(title, description, price, thumbnail, code, stock){
@@ -12,27 +17,25 @@ class Product {
     }
 }
 export class ProductManager {
-    constructor(path) {
-        this.productos = []
-        this.path = path
+    constructor(newpath) {
+        this.path = path.resolve(__dirname,newpath)
+        if(fs.existsSync(this.path)){
+            const data = fs.readFileSync(this.path)
+            this.productos = JSON.parse(data)
+        }
+        else{
+            this.productos = []
+        }
     }
     
     async getProducts() {
-        if (this.productos.length == 0){
-            let fileExists = fs.existsSync(this.path)
-            if(fileExists){
-                const data = await fs.promises.readFile(this.path);
-                this.productos = JSON.parse(data);
-            }
-            
-        }
         return this.productos
     }
     
     async addProduct(title, description, price, thumbnail, code, stock) {
         if (!title || !description || !price || !thumbnail || !code || !stock){
-            console.log('Todos los campos son obligatorios')
-            return
+            const producto = {mensaje: 'Todos los campos son obligatorios'}
+            return producto
         }
         const find = this.productos.find((item) => item.code === code)
         if (!find){
@@ -51,19 +54,14 @@ export class ProductManager {
             return producto
         }
         else{
-            console.log(`Producto existe id: ${find.id}`)
-            return
+            const producto = {mensaje: `Producto existe id: ${find.id}`}
+            return producto
         }
     }
 
     async getProductById(id){
         const find = this.productos.find((item) => item.id === id);
-        if (find) {
-            return find
-        }else{
-            console.log(`Producto no existe id: ${id}`)
-            return
-        };
+        return find
     }
 
     async updateProduct(title, description, price, thumbnail, code, stock) {
@@ -88,8 +86,8 @@ export class ProductManager {
         }
     }
 
-    async deleteProduct(code) {
-        this.productos = this.productos.filter((item)=>item.code !== code)
+    async deleteProduct(id) {
+        this.productos = this.productos.filter((item)=>item.id !== id)
         await fs.promises.writeFile(this.path, JSON.stringify(this.productos));
         return this.productos
     }
