@@ -23,7 +23,7 @@ app.get('/api/products', async (req, res) => {
     
 });
 
-// Obtener un usuario por ID (GET)
+// Obtener un producto por ID (GET)
 app.get('/api/products/:id', async (req, res) => {
   const id = parseInt(req.params.id);
   const producto = await productManagerInstance.getProductById(id)
@@ -57,7 +57,7 @@ app.put('/api/products/:id', async (req, res) => {
   }
 });
 
-// Eliminar un usuario por ID (DELETE)
+// Eliminar un producto por ID (DELETE)
 app.delete('/api/products/:id', async (req, res) => {
   const id = parseInt(req.params.id);
   const producto = await productManagerInstance.getProductById(id)
