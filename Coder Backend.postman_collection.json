@@ -11,11 +11,22 @@
 			"item": [
 				{
 					"name": "Productos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/products?limit=5",
+							"raw": "http://localhost:8080/api/products?limit=9",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -28,12 +39,74 @@
 							"query": [
 								{
 									"key": "limit",
-									"value": "5"
+									"value": "9"
 								}
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Productos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"products"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "9",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1827"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"723-YXSDYji+9RmEm+RSV6PfT1Qyxwk\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 31 Oct 2023 19:57:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Producto prueba 1\",\n        \"description\": \"Este es un producto prueba 1\",\n        \"price\": 100,\n        \"thumbnail\": \"Sin imagen\",\n        \"code\": \"abc1\",\n        \"stock\": 15,\n        \"status\": true,\n        \"category\": \"categoria1\"\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Producto prueba 2\",\n        \"description\": \"Este es un producto prueba 2\",\n        \"price\": 200,\n        \"thumbnail\": \"Sin imagen\",\n        \"code\": \"abc2\",\n        \"stock\": 25,\n        \"status\": true,\n        \"category\": \"categoria1\"\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Producto prueba 3\",\n        \"description\": \"Este es un producto prueba 3\",\n        \"price\": 300,\n        \"thumbnail\": \"Sin imagen\",\n        \"code\": \"abc3\",\n        \"stock\": 35,\n        \"status\": true,\n        \"category\": \"categoria1\"\n    },\n    {\n        \"id\": 4,\n        \"title\": \"Producto prueba 4\",\n        \"description\": \"Este es un producto prueba 4\",\n        \"price\": 400,\n        \"thumbnail\": \"Sin imagen\",\n        \"code\": \"abc4\",\n        \"stock\": 45,\n        \"status\": true,\n        \"category\": \"categoria1\"\n    },\n    {\n        \"id\": 5,\n        \"title\": \"Producto prueba 5\",\n        \"description\": \"Este es un producto prueba 5\",\n        \"price\": 500,\n        \"thumbnail\": \"Sin imagen\",\n        \"code\": \"abc5\",\n        \"stock\": 55,\n        \"status\": true,\n        \"category\": \"categoria1\"\n    },\n    {\n        \"id\": 6,\n        \"title\": \"Producto prueba 6\",\n        \"description\": \"Este es un producto prueba 6\",\n        \"price\": 600,\n        \"thumbnail\": \"Sin imagen\",\n        \"code\": \"abc6\",\n        \"stock\": 65,\n        \"status\": true,\n        \"category\": \"categoria1\"\n    },\n    {\n        \"id\": 7,\n        \"title\": \"Producto prueba 7\",\n        \"description\": \"Este es un producto prueba 7\",\n        \"price\": 700,\n        \"thumbnail\": \"Sin imagen\",\n        \"code\": \"abc7\",\n        \"stock\": 75,\n        \"status\": true,\n        \"category\": \"categoria1\"\n    },\n    {\n        \"id\": 8,\n        \"title\": \"Producto prueba 8\",\n        \"description\": \"Este es un producto prueba 8\",\n        \"price\": 800,\n        \"thumbnail\": \"Sin imagen\",\n        \"code\": \"abc8\",\n        \"stock\": 85,\n        \"status\": true,\n        \"category\": \"categoria1\"\n    },\n    {\n        \"id\": 9,\n        \"title\": \"Producto prueba 9\",\n        \"description\": \"Este es un producto prueba 9\",\n        \"price\": 900,\n        \"thumbnail\": \"Sin imagen\",\n        \"code\": \"abc9\",\n        \"stock\": 95,\n        \"status\": true,\n        \"category\": \"categoria1\"\n    },\n    {\n        \"id\": 10,\n        \"title\": \"Producto prueba 10\",\n        \"description\": \"Este es un producto prueba 10\",\n        \"price\": 1000,\n        \"thumbnail\": \"Sin imagen\",\n        \"code\": \"abc10\",\n        \"stock\": 105,\n        \"status\": true,\n        \"category\": \"categoria1\"\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "Productos por Id",
@@ -54,16 +127,83 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Productos por Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/products/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"products",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "181"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b5-v4iwoLlbvqtdS68HhjOkbKaRppA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 31 Oct 2023 19:57:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"title\": \"Producto prueba 1\",\n    \"description\": \"Este es un producto prueba 1\",\n    \"price\": 100,\n    \"thumbnail\": \"Sin imagen\",\n    \"code\": \"abc1\",\n    \"stock\": 15,\n    \"status\": true,\n    \"category\": \"categoria1\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Productos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\":\"Producto Externo\", \r\n    \"description\":\"Producto agregado con postman\",\r\n    \"price\":1500,\r\n    \"thumbnail\":\"Sin imagen\",\r\n    \"code\":\"ext1\",\r\n    \"stock\":1000\r\n}",
+							"raw": "{\r\n    \"title\":\"Producto Externo\", \r\n    \"description\":\"Producto agregado con postman\",\r\n    \"price\":1500,\r\n    \"thumbnail\":\"Sin imagen\",\r\n    \"code\":\"ext1\",\r\n    \"stock\":1000,\r\n    \"status\": true,\r\n    \"category\":\"categoriaExterna\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -83,7 +223,71 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Productos",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"Producto Externo\", \r\n    \"description\":\"Producto agregado con postman\",\r\n    \"price\":1500,\r\n    \"thumbnail\":\"Sin imagen\",\r\n    \"code\":\"ext1\",\r\n    \"stock\":1000,\r\n    \"status\": true,\r\n    \"category\":\"categoriaExterna\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "191"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"bf-hPA0vrbZJGZziauslbatdTG5V0I\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 31 Oct 2023 19:59:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 11,\n    \"title\": \"Producto Externo\",\n    \"description\": \"Producto agregado con postman\",\n    \"price\": 1500,\n    \"thumbnail\": \"Sin imagen\",\n    \"code\": \"ext1\",\n    \"stock\": 1000,\n    \"status\": true,\n    \"category\": \"categoriaExterna\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Productos por Id",
@@ -113,7 +317,72 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Productos por Id",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"Producto  modificado\", \r\n    \"description\":\"Producto agregado con postman\",\r\n    \"price\":1500,\r\n    \"thumbnail\":\"Sin imagen\",\r\n    \"code\":\"ext1\",\r\n    \"stock\":1000,\r\n    \"status\": true,\r\n    \"category\":\"categoriaModificada\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/products/11",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"products",
+										"11"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "198"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c6-JddYFlTgtf7heddu/NVFk7rlfNc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 31 Oct 2023 20:00:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 11,\n    \"title\": \"Producto  modificado\",\n    \"description\": \"Producto agregado con postman\",\n    \"price\": 1500,\n    \"thumbnail\": \"Sin imagen\",\n    \"code\": \"ext1\",\n    \"stock\": 1000,\n    \"status\": true,\n    \"category\": \"categoriaModificada\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Productos por Id Copy",
@@ -134,9 +403,468 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Productos por Id Copy",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/products/11",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"products",
+										"11"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"23-bNPvRC3f9DC9gS00Jlj3ph0iz3E\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 31 Oct 2023 20:00:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mensaje\": \"Producto 11 eliminado\"\n}"
+						}
+					]
 				}
 			]
+		},
+		{
+			"name": "cart",
+			"item": [
+				{
+					"name": "Carrito",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Productos",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/carts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"17-69LZqoZMbXCcOy6dqo4ZAfkUiwA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 31 Oct 2023 19:45:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"productos\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Carritos por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carts/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Carritos por Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/carts/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carts",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"17-69LZqoZMbXCcOy6dqo4ZAfkUiwA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 31 Oct 2023 19:45:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"productos\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Producto en Carrito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carts/1/product/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								"1",
+								"product",
+								"9"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Productos por Id",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/carts/1/product/9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carts",
+										"1",
+										"product",
+										"9"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-T+aCTiTY4Gf6d9N351lNMMEh77g\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 31 Oct 2023 19:45:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"productos\": [\n        {\n            \"id\": 9,\n            \"quantity\": 1\n        }\n    ]\n}"
+						},
+						{
+							"name": "Productos por Id",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/carts/1/product/8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carts",
+										"1",
+										"product",
+										"8"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-KUFIMHUDBvqeuUJRbWlAnlHh6MU\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 31 Oct 2023 19:48:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"productos\": [\n        {\n            \"id\": 9,\n            \"quantity\": 3\n        },\n        {\n            \"id\": 8,\n            \"quantity\": 1\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Carrito",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carts/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Productos por Id Copy",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/carts/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carts",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "33"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"21-3Yp3Q7lD52vCC6bAKZNKgd021fw\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 31 Oct 2023 19:51:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mensaje\": \"Carrito 1 eliminado\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
