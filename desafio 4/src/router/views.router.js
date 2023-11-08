@@ -13,10 +13,11 @@ viewRouter.get('/', async (req, res)=>{
     });
 });
 
-viewRouter.get('/realtimeproducts', async (req, res)=>{
-    res.render('realtimeproducts',{
+viewRouter.get('/realTimeProducts', async (req, res)=>{
+    let prod = await productManagerInstance.getProducts()
+    res.render('realTimeProducts',{
         title:"realtimeproducts",
-        
+        products: prod
     });
 });
 
