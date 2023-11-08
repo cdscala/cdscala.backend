@@ -14,10 +14,10 @@ viewRouter.get('/', async (req, res)=>{
 });
 
 viewRouter.get('/realTimeProducts', async (req, res)=>{
-    let prod = await productManagerInstance.getProducts()
+    // let prod = await productManagerInstance.getProducts()
     res.render('realTimeProducts',{
         title:"realtimeproducts",
-        products: prod
+        // products: prod
     });
 });
 

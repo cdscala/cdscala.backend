@@ -33,8 +33,8 @@ const io = new Server(httpServer)
 let messages = [];
 io.on('connection', (socket) => {
     console.log('Un cliente se ha conectado');
-  
-    socket.on('message', (data) => {
+    socket.emit('lista',)
+    socket.on('lista', (data) => {
         messages.push(data);
         io.emit('messageLogs', messages)
     });
