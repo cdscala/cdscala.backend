@@ -23,3 +23,19 @@ function renderProductItem(data){
     }).join(" ")
     document.getElementById('product-list').innerHTML = html
 }
+
+const form = document.getElementById('form');
+const input = document.getElementById('input');
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (input.value) {
+        socket.emit('add-product', input.value);
+        input.value = '';
+    }
+    Swal.fire({
+        title: "Good job!",
+        text: "You clicked the button!",
+        icon: "success"
+      });
+});
