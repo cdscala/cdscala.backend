@@ -39,10 +39,6 @@ io.on('connection', (socket) => {
         io.emit('messageLogs', messages)
     });
 
-    socket.on("auth", (username) => {
-        socket.emit("messageLogs", messages);
-        socket.broadcast.emit("userConnected", username);
-      });
 });
 httpServer.listen(port, hostname,  () => { console.log(`Server corriendo en http://${hostname}:${port}/`) })
 
