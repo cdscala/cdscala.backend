@@ -1,1 +1,38 @@
-{{> home}}
+<h1>Lista de productos</h1>
+{{!-- para usar con bootstrap --}}
+<section class="mdl-grid" id="my-table">
+  <div class="mdl-layout-spacer"></div>
+  <div class="mdl-cell mdl-cell--6-col-tablet mdl-cell--10-col-desktop mdl-cell--stretch">
+
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+            <tr>
+            <th>id</th>
+            <th>title</th>
+            <th>description</th>
+            <th>price</th>
+            <th>thumbnail</th>
+            <th>code</th>
+            <th>stock</th>
+            <th>status</th>
+            <th>category</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+        {{#each products as |product|}}
+            <tr>
+                <td>{{product.id}}</td>
+                <td>{{product.title}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.thumbnail}}</td>
+                <td>{{product.code}}</td>
+                <td>{{product.stock}}</td>
+                <td>{{product.status}}</td>
+                <td>{{product.category}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</section> 

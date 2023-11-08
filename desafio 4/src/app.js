@@ -32,8 +32,6 @@ const io = new Server(httpServer)
 
 let messages = [];
 io.on('connection', (socket) => {
-    console.log('Un cliente se ha conectado');
-  
     socket.on('message', (data) => {
         messages.push(data);
         io.emit('messageLogs', messages)
