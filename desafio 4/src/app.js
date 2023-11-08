@@ -6,6 +6,7 @@ import {productRouter} from './router/products.router.js'
 import {cartRouter} from './router/cart.router.js'
 import {viewRouter} from "./router/views.router.js";
 import __dirname from './utils.js';
+import { ProductManager } from './controllers/ProductManager.js';
 
 const app = express()
 const port = process.env.PORT || 8080;
@@ -30,14 +31,12 @@ const httpServer = createServer(app)
 const io = new Server(httpServer)
 
 
-let messages = [];
+const prodsManager = new ProductManager("../productos.json")
+let prods = await prodsManager.getProducts()
 io.on('connection', (socket) => {
     console.log('Un cliente se ha conectado');
-    socket.emit('lista',)
-    socket.on('lista', (data) => {
-        messages.push(data);
-        io.emit('messageLogs', messages)
-    });
+    socket.emit('lista',prods)
+    
 
 });
 httpServer.listen(port, hostname,  () => { console.log(`Server corriendo en http://${hostname}:${port}/`) })
