@@ -36,8 +36,10 @@ let prods = await prodsManager.getProducts()
 io.on('connection', (socket) => {
     console.log('Un cliente se ha conectado');
     socket.emit('lista',prods)
-    socket.on('add-product')
-
+    socket.on('delete-product',async (value) =>{
+        await prodsManager.deleteProduct(value)
+        prods = await prodsManager.getProducts()
+    })
 });
 httpServer.listen(port, hostname,  () => { console.log(`Server corriendo en http://${hostname}:${port}/`) })
 
