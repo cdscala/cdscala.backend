@@ -1,9 +1,7 @@
 import * as fs from "fs"
 import path from 'path'
-import { fileURLToPath } from 'url'
+import __dirname from "../utils.js"
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export class Product {
     constructor(title, description, price, thumbnail, code, stock, status, category){
