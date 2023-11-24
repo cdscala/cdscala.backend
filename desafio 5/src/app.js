@@ -21,17 +21,18 @@ app.use(express.json())
 app.engine('handlebars', handlebars.engine())
 app.set('views', `${__dirname}/views`)
 app.set('view engine', 'handlebars')
-app.use('/',express.static(__dirname + '/public'))
-app.use('/api/products', productRouter)
-app.use('/api/carts', cartRouter)
-app.use('/api/categories', categoryRouter)
-app.use('/', viewRouter)
+
 
 // const httpServer = app.listen(port, hostname,  () => { console.log(`Server corriendo en http://${hostname}:${port}/`) })
 const httpServer = createServer(app)
 
 const io = new Server(httpServer)
-
+app.io = io;
+app.use('/',express.static(__dirname + '/public'))
+app.use('/api/products', productRouter)
+app.use('/api/carts', cartRouter)
+app.use('/api/categories', categoryRouter)
+app.use('/', viewRouter)
 
 io.on('connection', async (socket) => {
     let prods = await ProductModel.find()
@@ -43,6 +44,7 @@ io.on('connection', async (socket) => {
         prods = await ProductModel.find()
         socket.emit('lista',prods)
     })
+    
 });
 httpServer.listen(port, hostname,  () => { console.log(`Server corriendo en http://${hostname}:${port}/`) })
 

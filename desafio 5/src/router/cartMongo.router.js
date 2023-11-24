@@ -33,7 +33,19 @@ cartMongoRouter.post('/:cid/product/:pid', async (req, res) => {
         if (!cart) {
           return res.status(404).json({ message: 'Carro no encontrado' });
         }
-        cart.
+        res.json(cart);
+      } catch (error) {
+        res.status(500).json({ message: error.message });
+      }
+});
+// Eliminar un producto en el carrito (DELETE)
+cartMongoRouter.delete('/:cid/product/:pid', async (req, res) => {
+    try {
+        
+        const cart = await CartModel.findByIdAndUpdate(req.params.cid, req.body, { new: true });
+        if (!cart) {
+          return res.status(404).json({ message: 'Carro no encontrado' });
+        }
         res.json(cart);
       } catch (error) {
         res.status(500).json({ message: error.message });

@@ -32,10 +32,13 @@ productMongoRouter.get('/:id', async (req, res) => {
 productMongoRouter.post('/', async (req, res) => {
     const product = new ProductModel(req.body);
     try {
-      const nuevoProducto = await product.save();
-      res.status(201).json(nuevoProducto);
+        const nuevoProducto = await product.save();
+
+        let prods = await ProductModel.find()
+        req.app.io.emit('lista',prods)
+        res.status(201).json(nuevoProducto);
     } catch (error) {
-      res.status(400).json({ message: error.message });
+        res.status(400).json({ message: error.message });
     }
 });
 
