@@ -264,7 +264,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\":\"Producto Externo\", \r\n    \"description\":\"Producto agregado con postman\",\r\n    \"price\":1500,\r\n    \"thumbnail\":\"Sin imagen\",\r\n    \"code\":\"ext3\",\r\n    \"stock\":1000,\r\n    \"status\": true,\r\n    \"category\":\"categoriaExterna\"\r\n}",
+							"raw": "{\r\n    \"title\":\"Producto 7\", \r\n    \"description\":\"Producto agregado 7\",\r\n    \"price\":1500,\r\n    \"thumbnail\":\"Sin imagen\",\r\n    \"code\":\"ext3\",\r\n    \"stock\":1000,\r\n    \"status\": true,\r\n    \"category\":\"655ff518c5597999b4b552ec\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
