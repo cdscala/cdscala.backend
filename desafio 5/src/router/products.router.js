@@ -1,10 +1,12 @@
 import express from 'express';
 import { ProductManager } from "../controllers/ProductManager.js"
 
+
  const productRouter = express.Router();
 
 // crear un manager de producto
 const productManagerInstance = new ProductManager("../productos.json")
+
 // Obtener todos los productos (GET)
 productRouter.get('/', async (req, res) => {
     const limitQuery = req.query.limit
