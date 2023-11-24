@@ -1,7 +1,6 @@
 const socket = io();
 
 socket.on("lista",(data) => {
-    // console.log(data)
     renderProductItem(data)
 })
 
@@ -9,7 +8,7 @@ function renderProductItem(data){
     const html = data.map((product,index) => {
         return `
         <tr>
-            <td>${product.id}</td>
+            <td>${product._id}</td>
             <td>${product.title}</td>
             <td>${product.description}</td>
             <td>${product.price}</td>
@@ -18,11 +17,13 @@ function renderProductItem(data){
             <td>${product.stock}</td>
             <td>${product.status}</td>
             <td>${product.category}</td>
-            <td><button value=${product.id} onclick=${deleteProductoTrigger(product.id)} class="cs-delete-btn">Delete</button></td>
+            <td><button value=${'\''+product._id+'\''} onclick=${deleteProductoTrigger('\''+product._id+'\'')} class="cs-delete-btn">Delete</button></td>
         </tr>
         `
     }).join(" ")
-    document.getElementById('product-list').innerHTML = html
+    if (document.getElementById('product-list')){
+        document.getElementById('product-list').innerHTML = html
+    }
 }
 function deleteProduct(id){
     console.log(`eliminar producto: ${id}`)

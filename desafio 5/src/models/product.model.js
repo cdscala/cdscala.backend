@@ -9,6 +9,7 @@ const productSchema = new Schema({
     thumbnail: { type: String },
     code: { type: String, required: true },
     stock: { type: Number, default: 0 },
+    status: { type: Boolean, default: false },
     category: { type: Schema.Types.ObjectId, ref: 'Category' },
     isVisible: { type: Boolean, default: false },
 });

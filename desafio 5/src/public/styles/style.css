@@ -20,7 +20,7 @@ body {
     position: relative;
     top: 5rem;
     width: 100%;
-    max-width: 800px;
+    max-width: 90%;
     min-width: 500px;
     margin: 0 auto 5em;
 }
@@ -70,8 +70,11 @@ th{
 }
 
 td {
+    min-width: 200px;
     padding: .6em 1em;
     word-break: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .table__caption{

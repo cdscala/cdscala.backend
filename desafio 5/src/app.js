@@ -7,8 +7,8 @@ import {productRouter} from './router/productsMongo.router.js'
 import {cartRouter} from './router/cart.router.js'
 import {viewRouter} from "./router/views.router.js"
 import __dirname from './utils.js'
-import { ProductManager } from './controllers/ProductManager.js'
 import { categoryRouter } from './router/categoryMongo.router.js'
+import ProductModel from './models/product.model.js'
 
 const app = express()
 const port = process.env.PORT || 8080
@@ -33,14 +33,15 @@ const httpServer = createServer(app)
 const io = new Server(httpServer)
 
 
-const prodsManager = new ProductManager("../productos.json")
-let prods = await prodsManager.getProducts()
-io.on('connection', (socket) => {
+io.on('connection', async (socket) => {
+    let prods = await ProductModel.find()
     console.log('Un cliente se ha conectado');
     socket.emit('lista',prods)
     socket.on('delete-product',async (value) =>{
-        await prodsManager.deleteProduct(value)
-        prods = await prodsManager.getProducts()
+        console.log(value)
+        await ProductModel.findByIdAndDelete(value)
+        prods = await ProductModel.find()
+        socket.emit('lista',prods)
     })
 });
 httpServer.listen(port, hostname,  () => { console.log(`Server corriendo en http://${hostname}:${port}/`) })

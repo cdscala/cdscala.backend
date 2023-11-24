@@ -29,10 +29,11 @@ cartMongoRouter.post('/', async (req, res) => {
 // Agregar un nuevo producto en el carrito (POST)
 cartMongoRouter.post('/:cid/product/:pid', async (req, res) => {
     try {
-        const cart = await CartModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        const cart = await CartModel.findByIdAndUpdate(req.params.cid, req.body, { new: true });
         if (!cart) {
-          return res.status(404).json({ message: 'Producto no encontrado' });
+          return res.status(404).json({ message: 'Carro no encontrado' });
         }
+        cart.
         res.json(cart);
       } catch (error) {
         res.status(500).json({ message: error.message });

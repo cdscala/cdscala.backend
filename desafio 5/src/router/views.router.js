@@ -1,15 +1,17 @@
 import express from 'express';
-import { ProductManager } from '../controllers/ProductManager.js';
+import ProductModel from '../models/product.model.js';
 
 const viewRouter = express.Router();
-// crear un manager de producto
-const productManagerInstance = new ProductManager("../productos.json")
 
 viewRouter.get('/', async (req, res)=>{
-    let prod = await productManagerInstance.getProducts()
+    let prod = await ProductModel.find()
+    let objectProd = []
+    prod.forEach(element => {
+        objectProd.push(element.toObject())
+    });
     res.render('index',{
         title:"HANDLEBARS",
-        products: prod
+        products: objectProd
     });
 });
 
