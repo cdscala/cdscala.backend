@@ -1,5 +1,5 @@
 import express from 'express';
-import CartModel from '../models/cart.model';
+import CartModel from '../models/cart.model.js';
  const cartMongoRouter = express.Router();
 
 // Obtener lista de productos del carrito por ID (GET)
@@ -26,8 +26,8 @@ cartMongoRouter.post('/', async (req, res) => {
     }
 });
 
-// Agregar un nuevo producto en el carrito (POST)
-cartMongoRouter.post('/:cid/product/:pid', async (req, res) => {
+// Actualizar el carrito (POST)
+cartMongoRouter.put('/:cid', async (req, res) => {
     try {
         const cart = await CartModel.findByIdAndUpdate(req.params.cid, req.body, { new: true });
         if (!cart) {
@@ -41,11 +41,12 @@ cartMongoRouter.post('/:cid/product/:pid', async (req, res) => {
 // Eliminar un producto en el carrito (DELETE)
 cartMongoRouter.delete('/:cid/product/:pid', async (req, res) => {
     try {
-        
-        const cart = await CartModel.findByIdAndUpdate(req.params.cid, req.body, { new: true });
+        const cart = await CartModel.findOneAndUpdate({ _id: req.params.cid},{ $pull: { products: { id: req.params.pid } } },{ new: true });
         if (!cart) {
           return res.status(404).json({ message: 'Carro no encontrado' });
         }
+        console.log(cart.products)
+        
         res.json(cart);
       } catch (error) {
         res.status(500).json({ message: error.message });
