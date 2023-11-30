@@ -27,12 +27,6 @@ app.set('view engine', 'handlebars')
 const httpServer = createServer(app)
 
 const io = new Server(httpServer)
-app.io = io;
-app.use('/',express.static(__dirname + '/public'))
-app.use('/api/products', productRouter)
-app.use('/api/carts', cartRouter)
-app.use('/api/categories', categoryRouter)
-app.use('/', viewRouter)
 
 io.on('connection', async (socket) => {
     let prods = await ProductModel.find()
@@ -43,9 +37,15 @@ io.on('connection', async (socket) => {
         await ProductModel.findByIdAndDelete(value)
         prods = await ProductModel.find()
         socket.emit('lista',prods)
-    })
-    
+    })   
 });
+app.use('/',express.static(__dirname + '/public'))
+app.use('/api/products', productRouter)
+app.use('/api/carts', cartRouter)
+app.use('/api/categories', categoryRouter)
+app.use('/', viewRouter)
+
+
 httpServer.listen(port, hostname,  () => { console.log(`Server corriendo en http://${hostname}:${port}/`) })
 
 
