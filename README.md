@@ -1,5 +1,5 @@
 #Para correr el servidor:
-- cd '.\desafio 3\'.
+- cd '.\PreEntrega2\'.
 - npm install.
 - npm run start.
 
