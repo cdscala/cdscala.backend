@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2'
 
 const { Schema, model } = mongoose;
 
@@ -14,6 +15,7 @@ const productSchema = new Schema({
     isVisible: { type: Boolean, default: false },
 });
 
+productSchema.plugin(mongoosePaginate)
 const ProductModel = model('Product', productSchema);
 
 export default ProductModel;

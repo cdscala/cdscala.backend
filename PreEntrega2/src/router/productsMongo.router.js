@@ -6,8 +6,14 @@ import ProductModel from '../models/product.model.js';
 
 // Obtener todos los productos (GET)
 productMongoRouter.get('/', async (req, res) => {
+  var query = req.query.query? JSON.parse(req.query.query): {}
+  var options = {
+    sort: req.query.sort? JSON.parse(req.query.sort) : {},
+    limit: req.query.limit || 20,
+    page: req.query.page || 1
+  }
     try {
-        const productos = await ProductModel.find()
+        const productos = await ProductModel.paginate(query,options)
         res.status(200).json(productos)
     } catch (error) {
         res.status(500).json(error.message)
