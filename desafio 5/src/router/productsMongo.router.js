@@ -34,7 +34,6 @@ productMongoRouter.post('/', async (req, res) => {
     try {
         const nuevoProducto = await product.save();
         let prods = await ProductModel.find()
-        console.log(req.socket)
         req.io.emit('lista',prods)
         res.status(201).json(nuevoProducto);
     } catch (error) {
@@ -49,6 +48,8 @@ productMongoRouter.put('/:id', async (req, res) => {
         if (!producto) {
           return res.status(404).json({ message: 'Producto no encontrado' });
         }
+        let prods = await ProductModel.find()
+        req.io.emit('lista',prods)
         res.json(producto);
       } catch (error) {
         res.status(500).json({ message: error.message });
@@ -58,10 +59,12 @@ productMongoRouter.put('/:id', async (req, res) => {
 // Eliminar un producto por ID (DELETE)
 productMongoRouter.delete('/:id', async (req, res) => {
     try {
-        const producto = await Product.findByIdAndDelete(req.params.id);
+        const producto = await ProductModel.findByIdAndDelete(req.params.id);
         if (!producto) {
           return res.status(404).json({ message: 'Producto no encontrado' });
         }
+        let prods = await ProductModel.find()
+        req.io.emit('lista',prods)
         res.json({ message: 'Producto eliminado exitosamente' });
     } catch (error) {
         res.status(500).json({ message: error.message });
