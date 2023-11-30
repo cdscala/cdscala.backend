@@ -34,8 +34,8 @@ productMongoRouter.post('/', async (req, res) => {
     try {
         const nuevoProducto = await product.save();
         let prods = await ProductModel.find()
-        console.log(req)
-        req.socket.emit('lista',prods)
+        console.log(req.socket)
+        req.io.emit('lista',prods)
         res.status(201).json(nuevoProducto);
     } catch (error) {
         res.status(400).json({ message: error.message });

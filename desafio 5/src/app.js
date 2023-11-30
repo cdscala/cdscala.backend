@@ -31,6 +31,7 @@ const io = new Server(httpServer)
 io.on('connection', async (socket) => {
     let prods = await ProductModel.find()
     console.log('Un cliente se ha conectado');
+    socket.join('sala1');
     socket.emit('lista',prods)
     socket.on('delete-product',async (value) =>{
         console.log(value)
@@ -39,6 +40,10 @@ io.on('connection', async (socket) => {
         socket.emit('lista',prods)
     })   
 });
+app.use((req, res, next) => {
+    req.io = io;
+    return next();
+  });
 app.use('/',express.static(__dirname + '/public'))
 app.use('/api/products', productRouter)
 app.use('/api/carts', cartRouter)
