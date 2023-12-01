@@ -9,6 +9,7 @@ import {viewRouter} from "./router/views.router.js"
 import __dirname from './utils.js'
 import { categoryRouter } from './router/categoryMongo.router.js'
 import ProductModel from './models/product.model.js'
+import CartModel from './models/cart.model.js'
 
 const app = express()
 const port = process.env.PORT || 8080
@@ -28,16 +29,31 @@ const httpServer = createServer(app)
 
 const io = new Server(httpServer)
 
+let carrito = null
+
 io.on('connection', async (socket) => {
     let prods = await ProductModel.find()
     console.log('Un cliente se ha conectado');
     socket.join('sala1');
     socket.emit('lista',prods)
     socket.on('delete-product',async (value) =>{
-        console.log(value)
         await ProductModel.findByIdAndDelete(value)
         prods = await ProductModel.find()
         socket.emit('lista',prods)
+    }) 
+    socket.on('add-product-cart',async (value) =>{
+        if (!carrito){
+            const newCarrito = new CartModel()
+            carrito = newCarrito._id
+        }
+        
+        var query ={ _id: carrito },
+        update = {$addToSet:{ products: { product: value , quantity: 1 } } },
+        options = { upsert: true };
+
+        const result = await CartModel.findByIdAndUpdate(query, update, options)
+        
+        socket.emit('add-product-cart-alert',{carrito: carrito, producto: value}) 
     })   
 });
 app.use((req, res, next) => {

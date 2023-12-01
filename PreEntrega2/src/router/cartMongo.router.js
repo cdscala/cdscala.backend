@@ -5,7 +5,7 @@ import CartModel from '../models/cart.model.js';
 // Obtener lista de productos del carrito por ID (GET)
 cartMongoRouter.get('/:id', async (req, res) => {
     try {
-        const cart = await CartModel.findById(req.params.id).populate('products.id')
+        const cart = await CartModel.findById(req.params.id).populate('products.product')
         if (!cart) {
             return res.status(404).json({ message: 'Carrp no encontrado' });
         }
