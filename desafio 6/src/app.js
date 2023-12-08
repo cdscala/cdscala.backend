@@ -15,6 +15,7 @@ import ProductModel from './models/product.model.js'
 import CartModel from './models/cart.model.js'
 import sessionRouter from './routes/api/session.router.js'
 import loginRouter from './routes/views/login.router.js'
+import profileRouter from './routes/views/profile.router.js'
 
 
 const app = express()
@@ -81,8 +82,11 @@ app.use('/api/products', productRouter)
 app.use('/api/carts', cartRouter)
 app.use('/api/categories', categoryRouter)
 app.use('/', viewRouter)
+
 app.use('/api/sessions', sessionRouter)
 app.use("/login", loginRouter);
+app.use("/profile", profileRouter)
+app.use('/logout', sessionRouter)
 
 app.use((err,req,res,next)=>{
     console.error(err.stack)

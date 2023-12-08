@@ -5,7 +5,7 @@ const profileRouter = express.Router();
 profileRouter.get("/", (req, res) => {
   let data = {
     layout: "index",
-    user: req.session,
+    user: req.session.user,
   };
   res.render("profile", data);
 });

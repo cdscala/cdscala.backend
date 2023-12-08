@@ -9,7 +9,7 @@ sessionRouter.post('/register', registerUser)
 
 sessionRouter.post('/login', loginUser)
 
-sessionRouter.post('/logout', logOut)
+sessionRouter.get('/', logOut)
 
 sessionRouter.post('/profile', showProfile)
 
