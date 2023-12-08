@@ -1,5 +1,5 @@
 import express from 'express';
-import CartModel from '../models/cart.model.js';
+import CartModel from '../../models/cart.model.js';
  const cartMongoRouter = express.Router();
 
 // Obtener lista de productos del carrito por ID (GET)

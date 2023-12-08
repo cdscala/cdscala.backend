@@ -24,6 +24,22 @@ socket.on('add-product-cart-alert',(data) => {
     }).showToast();
 })
 
+socket.on('combinacion-incorrecta',() => {
+    Toastify({
+        text: `Combinacion usuario/contraseña incorrecta`,
+        duration: 3000,
+        destination: "",
+        newWindow: true,
+        close: true,
+        gravity: "top", 
+        position: "center", 
+        stopOnFocus: true, 
+        style: {
+        },
+        onClick: function(){} 
+    }).showToast();
+})
+
 function renderProductItem(data){
     const html = data.map((product,index) => {
         return `
@@ -92,6 +108,22 @@ function addProductCart(id){
 }
 function addProductoCartTrigger(id){
     return `addProductCart(${id})`
+}
+
+const element = document.getElementById("login-btn");
+if (element){
+    element.addEventListener("click", loginRedirect);
+}
+const element2 = document.getElementById("register-btn");
+if (element2){
+    element2.addEventListener("click", loginRedirect);
+}
+
+function loginRedirect() {
+    window.location.href = '/login'
+}
+function registerRedirect() {
+    window.location.href = '/register'
 }
 
 // const form = document.getElementById('form');
