@@ -5,7 +5,7 @@ export const registerUser = async (req,res)=> {
         const {first_name, last_name, age, email, password} = req.body
         const user = new UserModel({first_name, last_name, age, email, password})
         await user.save()
-        res.redirect('/profile')
+        res.redirect('/login')
     } catch (error) {
         console.log('Error al registrar usuario',error)
         res.redirect('/')
