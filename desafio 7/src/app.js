@@ -1,10 +1,13 @@
 import express from 'express'
+import 'dotenv/config.js'
 import { db } from './config/database.js'
 import {createServer} from 'http'
 import handlebars from "express-handlebars"
 import session from 'express-session'
 import cookieParser from 'cookie-parser'
 import MongoStore from 'connect-mongo'
+import passport from 'passport'
+import initializePassport from './config/passport.js'
 import {Server} from "socket.io"
 import {productRouter} from './routes/api/productsMongo.router.js'
 import {cartRouter} from './routes/api/cartMongo.router.js'
@@ -16,6 +19,7 @@ import CartModel from './models/cart.model.js'
 import sessionRouter from './routes/api/session.router.js'
 import loginRouter from './routes/views/login.router.js'
 import profileRouter from './routes/views/profile.router.js'
+import recoveryRouter from './routes/views/recovery.router.js'
 
 
 const app = express()
@@ -32,14 +36,18 @@ app.set('views', `${__dirname}/views`)
 app.set('view engine', 'handlebars')
 
 app.use(session({
-    secret: 'CoderSecret',
+    secret: process.env.HASH,
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({
-        mongoUrl: 'mongodb+srv://carlosdscala:TEmmhXWGwrX7MUQ3@cluster0.eybydfo.mongodb.net/?retryWrites=true&w=majority',
+        mongoUrl: process.env.MONGO,
         ttl: 2*60,
     })
 }))
+
+initializePassport()
+app.use(passport.initialize())
+app.use(passport.session())
 
 // const httpServer = app.listen(port, hostname,  () => { console.log(`Server corriendo en http://${hostname}:${port}/`) })
 const httpServer = createServer(app)
@@ -50,7 +58,7 @@ let carrito = null
 
 io.on('connection', async (socket) => {
     let prods = await ProductModel.find()
-    console.log('Un cliente se ha conectado');
+    console.log('Un cliente se ha conectado')
     socket.join('sala1');
     socket.emit('lista',prods)
     socket.on('delete-product',async (value) =>{
@@ -65,8 +73,8 @@ io.on('connection', async (socket) => {
         }
         
         var query ={ _id: carrito },
-        update = {$addToSet:{ products: { product: value , quantity: 1 } } },
-        options = { upsert: true };
+        update = {$addToSet:{ products: { product: value , quantity: 1 } } }
+        options = { upsert: true }
 
         const result = await CartModel.findByIdAndUpdate(query, update, options)
         
@@ -74,8 +82,8 @@ io.on('connection', async (socket) => {
     })   
 });
 app.use((req, res, next) => {
-    req.io = io;
-    return next();
+    req.io = io
+    return next()
   });
 app.use('/',express.static(__dirname + '/public'))
 app.use('/api/products', productRouter)
@@ -87,6 +95,7 @@ app.use('/api/sessions', sessionRouter)
 app.use("/login", loginRouter);
 app.use("/profile", profileRouter)
 app.use('/logout', sessionRouter)
+app.use('/recovery', recoveryRouter)
 
 app.use((err,req,res,next)=>{
     console.error(err.stack)

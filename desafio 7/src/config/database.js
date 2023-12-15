@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-mongoose.connect('mongodb+srv://carlosdscala:TEmmhXWGwrX7MUQ3@cluster0.eybydfo.mongodb.net/?retryWrites=true&w=majority', {});
+mongoose.connect(process.env.MONGO, {});
 
 const db = mongoose.connection;
 
