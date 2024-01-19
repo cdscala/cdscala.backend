@@ -1,6 +1,7 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
+import config from "../config/env.config.js"
 
-mongoose.connect(process.env.MONGO, {});
+mongoose.connect(config.db, {})
 
 const db = mongoose.connection;
 
