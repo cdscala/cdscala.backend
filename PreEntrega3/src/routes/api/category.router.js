@@ -46,4 +46,4 @@ categoryRouter.delete('/:id', async (req, res) => {
 	}
 });
   
-export {categoryRouter}
+export default categoryRouter

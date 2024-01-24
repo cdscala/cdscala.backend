@@ -1,23 +1,35 @@
 import passport from "passport"
 import local from "passport-local"
-import GitHubStrategy from "passport-github2";
+import GitHubStrategy from "passport-github2"
+import jwt from 'passport-jwt'
 import { createHash, isValidPassword } from "../utils.js"
 import UserModel from "../models/user.model.js"
+import config from "../config/env.config.js"
+
+const JWTStrategy = jwt.Strategy;
+const ExtractJWT = jwt.ExtractJwt;
+
+const cookieExtractor = (req) => {
+  let token = null;
+  if (req && req.cookies) {
+    token = req.cookies["access_token"];
+  }
+  return token
+}
 
 const LocalStrategy = local.Strategy
 
-const initializePassport = () => {
+const initializePassport = (app) => {
     passport.use(
         "github",
         new GitHubStrategy(
           {
-            clientID: process.env.GIT_CLIENT_ID,
-            clientSecret: process.env.GIT_CLIENT_SECRET,
-            callbackURL: process.env.GIT_CALLBACK_URL,
+            clientID: config.gitClientID,
+            clientSecret: config.gitClientSecret,
+            callbackURL: config.gitCallbackURL,
           },
           async (accessToken, refreshToken, profile, done) => {
             try {
-            //   console.log(profile);
               let user = await UserModel.findOne({ email: profile._json.email });
               if (!user) {
                 let splitname = profile._json.name.split(' ')
@@ -48,7 +60,7 @@ const initializePassport = () => {
         const { first_name, last_name, email } = req.body
 
         try {
-          let user = await userModel.findOne({ email: username })
+          let user = await UserModel.findOne({ email: username })
           if (user) {
             console.log("Usuario ya existe")
             return done(null, false)
@@ -89,6 +101,22 @@ const initializePassport = () => {
       }
     )
   );
+  passport.use(
+    "jwt",
+    new JWTStrategy(
+      {
+        jwtFromRequest: ExtractJWT.fromExtractors([cookieExtractor]),
+        secretOrKey: config.privateKey,
+      },
+      async (jwt_payload, done) => {
+        try {
+          return done(null, jwt_payload);
+        } catch (error) {
+          return done(error);
+        }
+      }
+    )
+  );
 
 
   passport.serializeUser((user, done) => {
@@ -99,6 +127,11 @@ const initializePassport = () => {
     let user = await UserModel.findById(id);
     done(null, user);
   });
+  
+  app.use(passport.initialize())
+  app.use(passport.session())
+
+
 };
 
 

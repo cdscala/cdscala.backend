@@ -9,8 +9,8 @@ viewRouter.get('/', async (req, res)=>{
         title:"Login Buttons",
         layout: "index",
 
-    });
-});
+    })
+})
 
 viewRouter.get('/productList', async (req, res)=>{
     let prod = await ProductModel.find()
@@ -23,21 +23,21 @@ viewRouter.get('/productList', async (req, res)=>{
         products: objectProd,
         layout: "index",
 
-    });
-});
+    })
+})
 
 viewRouter.get('/realTimeProducts', async (req, res)=>{
     res.render('realTimeProducts',{
         title:"realtimeproducts",
-    });
-});
+    })
+})
 
 viewRouter.get('/products', async (req, res)=>{
     res.render('index',{
         title:"products",
         layout: "products",
-    });
-});
+    })
+})
 
 viewRouter.get('/carts/:cid', async (req, res)=>{
     let cart = await CartModel.findById(req.params.cid).populate('products.product')
@@ -54,4 +54,4 @@ viewRouter.get('/carts/:cid', async (req, res)=>{
     });
 });
 
-export {viewRouter};
+export default viewRouter
