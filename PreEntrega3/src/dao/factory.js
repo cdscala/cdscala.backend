@@ -5,6 +5,7 @@ export let Product
 export let Cart
 export let Category
 export let User
+export let Ticket
 
 switch (config.persistence) {
     case "MONGO":
@@ -26,6 +27,10 @@ switch (config.persistence) {
             "./mongodb/user.mongodb.js"
         );
         User = UserMongo;
+        const { default: TicketMongo } = await import(
+            "./mongodb/ticket.mongodb.js"
+        );
+        Ticket = TicketMongo;
         break;
 
     case "MEMORY":

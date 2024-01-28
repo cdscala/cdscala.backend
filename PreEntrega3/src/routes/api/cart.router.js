@@ -1,11 +1,14 @@
-import express from 'express';
-import { Cart } from '../../dao/factory.js';
-import CartDTO from '../../dao/DTOs/cart.dto.js';
+import express from 'express'
+import { Cart } from '../../dao/factory.js'
+import CartDTO from '../../dao/DTOs/cart.dto.js'
+import { Ticket } from '../../dao/factory.js'
+import TicketDTO from '../../dao/DTOs/ticket.dto.js'
 import passport from 'passport'
-import { authorization } from '../../utils.js';
+import { authorization } from '../../utils.js'
 
 const cartRouter = express.Router();
 const cartService = new Cart();
+const ticketService = new Ticket();
 
 // Obtener lista de productos del carrito por ID (GET)
 cartRouter.get('/:id',
@@ -74,5 +77,20 @@ cartRouter.delete('/:cid', async (req, res) => {
     res.status(500).json({ status: "error", message: "Internal Server Error" })
   }
 })
+
+// Comprar Carrito
+cartRouter.put('/:cid/purchase',
+  authorization('USER'),
+  passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
+    try {
+      const ticket = new TicketDTO()
+      const result = await cartService.updateCart(req.params.cid, req.body)
+      res.json({ status: "success", message: result })
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({ status: "error", message: "Internal Server Error" })
+    }
+  })
 
 export default cartRouter
