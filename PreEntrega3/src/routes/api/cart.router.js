@@ -27,7 +27,7 @@ cartRouter.post('/',
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
     try {
-      const cart = new CartDTO(req.body)
+      const cart = new CartDTO(req?.body)
       const result = await cartService.createCart(cart)
       res.json({ status: "success", message: result })
     } catch (error) {

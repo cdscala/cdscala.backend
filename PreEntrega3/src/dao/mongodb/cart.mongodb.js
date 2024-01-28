@@ -16,7 +16,7 @@ export default class Cart {
     };
 
     createCart = async (cart) => {
-        const carto = new CartModel(req.body);
+        const carto = new CartModel(cart);
         try {
             const nuevoCart = await carto.save()
             return (nuevoCart)
