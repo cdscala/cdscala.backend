@@ -8,7 +8,7 @@ export default class Category {
             const categorias = await CategoryModel.find();
             return (categorias);
         } catch (error) {
-            throw ({ message: error.message });
+            throw (error.message);
         }
     };
 
@@ -18,7 +18,7 @@ export default class Category {
             const nuevaCategoria = await cat.save();
             return (nuevaCategoria);
         } catch (error) {
-            throw ({ message: error.message });
+            throw (error.message);
         }
     };
 
@@ -26,11 +26,11 @@ export default class Category {
         try {
             const categoria = await CategoryModel.findByIdAndUpdate(cid, modcategory, { new: true });
             if (!categoria) {
-                throw ({ message: 'Categoría no encontrada' });
+                return ('Categoría no encontrada');
             }
             return (categoria);
         } catch (error) {
-            throw ({ message: error.message });
+            throw (error.message);
         }
     }
 
@@ -38,11 +38,11 @@ export default class Category {
         try {
             const categoria = await CategoryModel.findByIdAndDelete(cid);
             if (!categoria) {
-                throw ({ message: 'Categoría no encontrada' });
+                return ('Categoría no encontrada');
             }
-            return({ message: 'Categoría eliminada exitosamente' });
+            return('Categoría eliminada exitosamente');
         } catch (error) {
-            throw ({ message: error.message });
+            throw (error.message);
         }
     }
 }

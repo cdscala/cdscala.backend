@@ -16,15 +16,14 @@ export const generateToken = (user) => {
     return token
 }
 export const verifyToken = (token) => {
-    return jwt.verify(token.replace('Bearer','', config.privateKey))
+    return jwt.verify(token.replace('Bearer ',''), config.privateKey)
 } 
 export const authorization = (role) => {
     return async (req, res, next) => {
-   
-        if (!req.user) return res.status(401).send({ error: "Unauthorized" });
-        if (req.user.role != role)
+        const user =req.headers?.authorization? verifyToken(req.headers.authorization):null
+        if (!user) return res.status(401).send({ error: "Unauthorized" });
+        if (toString(user.role) !== toString(role))
           return res.status(403).send({ error: "No Permissions" });
-    
         next();
       };
 }

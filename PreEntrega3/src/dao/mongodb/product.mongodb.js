@@ -21,11 +21,11 @@ export default class Product {
         try {
             const producto = await ProductModel.findById(pid);
             if (!producto) {
-                throw ({ message: 'Producto no encontrado' });
+                return ( 'Producto no encontrado' );
             }
             return (producto);
         } catch (error) {
-            throw ({ message: error.message });
+            throw (error.message);
         }
     }
 
@@ -35,7 +35,7 @@ export default class Product {
             const nuevoProducto = await producto.save();
             return (nuevoProducto);
         } catch (error) {
-            throw ({ message: error.message });
+            throw (error.message );
         }
     };
 
@@ -43,23 +43,23 @@ export default class Product {
         try {
             const producto = await ProductModel.findByIdAndUpdate(pid, modproduct, { new: true });
             if (!producto) {
-                throw ({ message: 'Producto no encontrado' });
+                return ( 'Producto no encontrado' );
             }
             return (producto);
         } catch (error) {
-            throw ({ message: error.message });
+            throw (error.message);
         }
     }
 
-    deleteProduct = async (cid) => {
+    deleteProduct = async (pid) => {
         try {
-            const producto = await ProductModel.findByIdAndDelete(req.params.id);
+            const producto = await ProductModel.findByIdAndDelete(pid);
             if (!producto) {
-                throw ({ message: 'Producto no encontrado' });
+                return ( 'Producto no encontrado');
             }
-            return ({ message: 'Producto eliminado exitosamente' });
+            return ('Producto eliminado exitosamente' );
         } catch (error) {
-            throw ({ message: error.message });
+            throw ( error.message );
         }
     }
 }

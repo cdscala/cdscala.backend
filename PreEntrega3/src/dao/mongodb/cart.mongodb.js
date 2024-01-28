@@ -7,11 +7,11 @@ export default class Cart {
         try {
             const cart = await CartModel.findById(cid).populate('products.product')
             if (!cart) {
-                throw ({ message: 'Carro no encontrado' })
+                throw ('Carro no encontrado')
             }
             return (cart)
         } catch (error) {
-            throw ({ message: error.message });
+            throw (error.message);
         }
     };
 
@@ -21,7 +21,7 @@ export default class Cart {
             const nuevoCart = await carto.save()
             return (nuevoCart)
         } catch (error) {
-            throw ({ message: error.message })
+            throw (error.message)
         }
     };
 
@@ -29,11 +29,11 @@ export default class Cart {
         try {
             const cart = await CartModel.findByIdAndUpdate(cid, modcart, { new: true });
             if (!cart) {
-                throw ({ message: 'Carro no encontrado' });
+                return ('Carro no encontrado');
             }
             return (cart);
         } catch (error) {
-            throw ({ message: error.message })
+            throw (error.message)
         }
     }
 
@@ -41,12 +41,12 @@ export default class Cart {
         try {
             const cart = await CartModel.findOneAndUpdate({ _id: cid},{ $pull: { products: { id: pid } } },{ new: true });
             if (!cart) {
-                throw ({ message: 'Carro no encontrado' })
+                return ('Carro no encontrado')
             }
             
             return (cart);
           } catch (error) {
-            throw ({ message: error.message });
+            throw (error.message);
           }
     }
 
@@ -54,11 +54,11 @@ export default class Cart {
         try {
             const cart = await CartModel.findByIdAndDelete(cid)
             if (!cart) {
-                throw ({ message: 'Carro no encontrado' })
+                return ('Carro no encontrado')
             }
-            return ({ message: 'Carro eliminado exitosamente' })
+            return ('Carro eliminado exitosamente')
         } catch (error) {
-            throw ({ message: error.message })
+            throw (error.message)
         }
     }
 }

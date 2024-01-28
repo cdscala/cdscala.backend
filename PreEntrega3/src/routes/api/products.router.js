@@ -14,7 +14,7 @@ productRouter.get('/', async (req, res) => {
     const result = await productService.getProducts(req.query.query,req.query.sort,req.query.limit,req.query.page)
     res.json({ status: "success", message: result })
   } catch (error) {
-    console.log(error.message)
+    console.log(error)
     res.status(500).json({ status: "error", message: "Internal Server Error" })
   }
 });
@@ -25,7 +25,7 @@ productRouter.get('/:id', async (req, res) => {
     const result = await productService.getProduct(req.params.id);
     res.json({ status: "success", message: result })
   } catch (error) {
-    console.log(error.message)
+    console.log(error)
     res.status(500).json({ status: "error", message: "Internal Server Error" })
   }
 });
@@ -36,14 +36,12 @@ productRouter.post(
   authorization('ADMIN'),
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
-    const product = new ProductModel(req.body);
     try {
-      const nuevoProducto = await product.save();
-      let prods = await ProductModel.find()
-      req.io.emit('lista', prods)
-      res.status(201).json(nuevoProducto);
+      const result = await productService.createProduct(req.body);
+      res.json({ status: "success", message: result })
     } catch (error) {
-      res.status(400).json({ message: error.message });
+      console.log(error)
+      res.status(500).json({ status: "error", message: "Internal Server Error" })
     }
   });
 
@@ -54,15 +52,11 @@ productRouter.put(
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
     try {
-      const producto = await ProductModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
-      if (!producto) {
-        return res.status(404).json({ message: 'Producto no encontrado' });
-      }
-      let prods = await ProductModel.find()
-      req.io.emit('lista', prods)
-      res.json(producto);
+      const result = await productService.updateProduct(req.params.id, req.body);
+      res.json({ status: "success", message: result })
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      console.log(error)
+      res.status(500).json({ status: "error", message: "Internal Server Error" })
     }
   });
 
@@ -73,15 +67,11 @@ productRouter.delete(
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
     try {
-      const producto = await ProductModel.findByIdAndDelete(req.params.id);
-      if (!producto) {
-        return res.status(404).json({ message: 'Producto no encontrado' });
-      }
-      let prods = await ProductModel.find()
-      req.io.emit('lista', prods)
-      res.json({ message: 'Producto eliminado exitosamente' });
+      const result = await productService.deleteProduct(req.params.id);
+      res.json({ status: "success", message: result })
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      console.log(error)
+      res.status(500).json({ status: "error", message: "Internal Server Error" })
     }
   });
 

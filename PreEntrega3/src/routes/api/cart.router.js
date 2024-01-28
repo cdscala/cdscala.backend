@@ -1,69 +1,72 @@
 import express from 'express';
-import CartModel from '../../dao/models/cart.model.js';
+import { Cart } from '../../dao/factory.js';
+import passport from 'passport'
+import { authorization } from '../../utils.js';
+
 const cartRouter = express.Router();
+const cartService = new Cart();
 
 // Obtener lista de productos del carrito por ID (GET)
 cartRouter.get('/:id', async (req, res) => {
   try {
-    const cart = await CartModel.findById(req.params.id).populate('products.product')
-    if (!cart) {
-      return res.status(404).json({ message: 'Carro no encontrado' })
-    }
-    res.json(cart)
+    const result = await cartService.getCart(req.params.id)
+    res.json({ status: "success", message: result })
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.log(error)
+    res.status(500).json({ status: "error", message: "Internal Server Error" })
   }
 })
 
 // Crear un carrito (POST)
-cartRouter.post('/', async (req, res) => {
-  const cart = new CartModel(req.body);
-  try {
-    const nuevoCart = await cart.save()
-    res.status(201).json(nuevoCart)
-  } catch (error) {
-    res.status(400).json({ message: error.message })
-  }
-})
+cartRouter.post('/',
+  authorization('ADMIN'),
+  passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
+    try {
+      const result = await cartService.createCart(req.body)
+      res.json({ status: "success", message: result })
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({ status: "error", message: "Internal Server Error" })
+    }
+  })
 
 // Actualizar el carrito (POST)
-cartRouter.put('/:cid', async (req, res) => {
-  try {
-    const cart = await CartModel.findByIdAndUpdate(req.params.cid, req.body, { new: true });
-    if (!cart) {
-      return res.status(404).json({ message: 'Carro no encontrado' });
+cartRouter.put('/:cid',
+  authorization('ADMIN'),
+  passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
+    try {
+      const result = await cartService.updateCart(req.params.cid, req.body)
+      res.json({ status: "success", message: result })
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({ status: "error", message: "Internal Server Error" })
     }
-    res.json(cart);
-  } catch (error) {
-    res.status(500).json({ message: error.message })
-  }
-})
+  })
 
 // Eliminar un producto en el carrito (DELETE)
-cartRouter.delete('/:cid/product/:pid', async (req, res) => {
-  try {
-    const cart = await CartModel.findOneAndUpdate({ _id: req.params.cid }, { $pull: { products: { id: req.params.pid } } }, { new: true });
-    if (!cart) {
-      return res.status(404).json({ message: 'Carro no encontrado' })
+cartRouter.delete('/:cid/product/:pid',
+  authorization('ADMIN'),
+  passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
+    try {
+      const result = await cartService.deleteProductInCart(req.params.cid, req.params.pid)
+      res.json({ status: "success", message: result })
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({ status: "error", message: "Internal Server Error" })
     }
-    console.log(cart.products)
-
-    res.json(cart);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-})
+  })
 
 // Eliminar un carrito (DELETE)
-cartRouter.delete('/:id', async (req, res) => {
+cartRouter.delete('/:cid', async (req, res) => {
   try {
-    const cart = await CartModel.findByIdAndDelete(req.params.id)
-    if (!cart) {
-      return res.status(404).json({ message: 'Carro no encontrado' })
-    }
-    res.json({ message: 'Carro eliminado exitosamente' })
+    const result = await cartService.deleteCart(req.params.cid)
+    res.json({ status: "success", message: result })
   } catch (error) {
-    res.status(500).json({ message: error.message })
+    console.log(error)
+    res.status(500).json({ status: "error", message: "Internal Server Error" })
   }
 })
 

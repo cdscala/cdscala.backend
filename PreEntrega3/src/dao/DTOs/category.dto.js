@@ -1,6 +1,6 @@
 export default class CategoryDTO {
     constructor(category) {
-      this.name = category.title;
-      this.isVisible = category.description;
+        this.name = category.name;
+        this.isVisible = category.isVisible;
     }
-  }
+}
