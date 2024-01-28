@@ -1,49 +1,49 @@
 import express from 'express';
-import Category from '../../dao/models/category.model.js';
+import { Category } from '../../dao/factory.js';
+import passport from 'passport'
+import { authorization } from '../../utils.js';
 
 const categoryRouter = express.Router();
- 
+const categoryService = new Category();
+
 categoryRouter.get('/', async (req, res) => {
-  try {
-    const categorias = await Category.find();
-    res.json(categorias);
-  } catch (error) {
-    res.status(500).json({ message: error });
-  }
+	try {
+		const result = await categoryService.getCategory()
+		res.json({ status: "success", message: result })
+	} catch (error) {
+		console.log(error)
+		res.status(500).json({ status: "error", message: "Internal Server Error" })
+	}
 });
 
 categoryRouter.post('/', async (req, res) => {
-  const category = new Category(req.body);
-  try {
-    const nuevaCategoria = await category.save();
-    res.status(201).json(nuevaCategoria);
-  } catch (error) {
-    res.status(400).json({ message: error });
-  }
+	try {
+		const result = await categoryService.createCategory(req.body)
+		res.json({ status: "success", message: result })
+	} catch (error) {
+		console.log(error)
+		res.status(500).json({ status: "error", message: "Internal Server Error" })
+	}
 });
 
 categoryRouter.put('/:id', async (req, res) => {
 	try {
-		const categoria = await Category.findByIdAndUpdate(req.params.id, req.body, { new: true });
-		if (!categoria) {
-			return res.status(404).json({ message: 'Categoría no encontrada' });
-		}
-		res.json(categoria);
+		const result = await categoryService.updateCategory(req.params.id, req.body)
+		res.json({ status: "success", message: result })
 	} catch (error) {
-		res.status(500).json({ message: error });
+		console.log(error)
+		res.status(500).json({ status: "error", message: "Internal Server Error" })
 	}
 });
-  
+
 categoryRouter.delete('/:id', async (req, res) => {
 	try {
-		const categoria = await Category.findByIdAndDelete(req.params.id);
-		if (!categoria) {
-			return res.status(404).json({ message: 'Categoría no encontrada' });
-		}
-		res.json({ message: 'Categoría eliminada exitosamente' });
+		const result = await categoryService.deleteCategory(req.params.id)
+		res.json({ status: "success", message: result })
 	} catch (error) {
-		res.status(500).json({ message: error });
+		console.log(error)
+		res.status(500).json({ status: "error", message: "Internal Server Error" })
 	}
 });
-  
+
 export default categoryRouter
