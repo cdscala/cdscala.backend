@@ -1,6 +1,6 @@
 import express from 'express';
-import ProductModel from '../../models/product.model.js';
-import CartModel from '../../models/cart.model.js';
+import ProductModel from '../../dao/models/product.model.js';
+import CartModel from '../../dao/models/cart.model.js';
 
 const viewRouter = express.Router();
 

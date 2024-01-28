@@ -6,6 +6,7 @@ import loginRouter from './views/login.router.js'
 import profileRouter from './views/profile.router.js'
 import recoveryRouter from './views/recovery.router.js'
 import viewRouter from "./views/views.router.js"
+import { passportCall } from '../utils.js'
 
 const router = (app) => {
     app.use('/api/products', productRouter)
@@ -15,9 +16,12 @@ const router = (app) => {
 
     app.use('/', viewRouter)
     app.use("/login", loginRouter);
-    app.use("/profile", profileRouter)
-    app.use('/logout', sessionRouter)
+    app.use("/profile",passportCall("jwtCookie"), profileRouter)
+    app.use('/logout',passportCall("jwtCookie"), sessionRouter)
     app.use('/recovery', recoveryRouter)
+    app.get("/current", passportCall("jwtCookie"), (req, res) => {
+        res.send(req.user);
+    });
 }
 
 export default router

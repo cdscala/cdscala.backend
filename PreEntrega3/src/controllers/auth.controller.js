@@ -1,4 +1,4 @@
-import UserModel from "../models/user.model.js"
+import UserModel from "../dao/models/user.model.js"
 import { createHash, isValidPassword } from "../utils.js"
 
 export const registerUser = async (req,res)=> {
@@ -44,6 +44,7 @@ export const logOut = async (req,res)=>{
     try {
         if(req.session.user){
             delete req.session.user
+            res.clearCookie('access_token')
             req.session.destroy(error=>{
                 if (error){
                     console.error('Error al cerrar la sesion', error)
@@ -53,6 +54,7 @@ export const logOut = async (req,res)=>{
                     res.redirect('/')
                 }
             })
+            
          }
     } catch (error) {
         console.log('Error al cerrar la sesion', error)

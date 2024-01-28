@@ -1,80 +1,88 @@
-import express from 'express';
-import ProductModel from '../../models/product.model.js';
+import express from 'express'
+import passport from 'passport'
+import { Product } from '../../dao/factory.js';
 
- const productRouter = express.Router();
+import { authorization } from '../../utils.js';
+
+const productRouter = express.Router();
+const productService = new Product();
 
 
 // Obtener todos los productos (GET)
 productRouter.get('/', async (req, res) => {
-  var query = req.query.query? JSON.parse(req.query.query): {}
-  var options = {
-    sort: req.query.sort? JSON.parse(req.query.sort) : {},
-    limit: req.query.limit || 20,
-    page: req.query.page || 1
+  try {
+    const result = await productService.getProducts(req.query.query,req.query.sort,req.query.limit,req.query.page)
+    res.json({ status: "success", message: result })
+  } catch (error) {
+    console.log(error.message)
+    res.status(500).json({ status: "error", message: "Internal Server Error" })
   }
-    try {
-        const productos = await ProductModel.paginate(query,options)
-        res.status(200).json(productos)
-    } catch (error) {
-        res.status(500).json(error.message)
-    }
-    
 });
 
 // Obtener un producto por ID (GET)
 productRouter.get('/:id', async (req, res) => {
-    try {
-        const producto = await ProductModel.findById(req.params.id);
-        if (!producto) {
-          return res.status(404).json({ message: 'Producto no encontrado' });
-        }
-        res.json(producto);
-      } catch (error) {
-        res.status(500).json({ message: error.message });
-      }
+  try {
+    const result = await productService.getProduct(req.params.id);
+    res.json({ status: "success", message: result })
+  } catch (error) {
+    console.log(error.message)
+    res.status(500).json({ status: "error", message: "Internal Server Error" })
+  }
 });
 
 // Crear un nuevo producto (POST)
-productRouter.post('/', async (req, res) => {
+productRouter.post(
+  '/',
+  authorization('ADMIN'),
+  passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
     const product = new ProductModel(req.body);
     try {
-        const nuevoProducto = await product.save();
-        let prods = await ProductModel.find()
-        req.io.emit('lista',prods)
-        res.status(201).json(nuevoProducto);
+      const nuevoProducto = await product.save();
+      let prods = await ProductModel.find()
+      req.io.emit('lista', prods)
+      res.status(201).json(nuevoProducto);
     } catch (error) {
-        res.status(400).json({ message: error.message });
+      res.status(400).json({ message: error.message });
     }
-});
+  });
 
 // Actualizar un producto por ID (PUT)
-productRouter.put('/:id', async (req, res) => {
+productRouter.put(
+  '/:id',
+  authorization('ADMIN'),
+  passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
     try {
-        const producto = await ProductModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if (!producto) {
-          return res.status(404).json({ message: 'Producto no encontrado' });
-        }
-        let prods = await ProductModel.find()
-        req.io.emit('lista',prods)
-        res.json(producto);
-      } catch (error) {
-        res.status(500).json({ message: error.message });
+      const producto = await ProductModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      if (!producto) {
+        return res.status(404).json({ message: 'Producto no encontrado' });
       }
-});
+      let prods = await ProductModel.find()
+      req.io.emit('lista', prods)
+      res.json(producto);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
 
 // Eliminar un producto por ID (DELETE)
-productRouter.delete('/:id', async (req, res) => {
+productRouter.delete(
+  '/:id',
+  authorization('ADMIN'),
+  passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
     try {
-        const producto = await ProductModel.findByIdAndDelete(req.params.id);
-        if (!producto) {
-          return res.status(404).json({ message: 'Producto no encontrado' });
-        }
-        let prods = await ProductModel.find()
-        req.io.emit('lista',prods)
-        res.json({ message: 'Producto eliminado exitosamente' });
+      const producto = await ProductModel.findByIdAndDelete(req.params.id);
+      if (!producto) {
+        return res.status(404).json({ message: 'Producto no encontrado' });
+      }
+      let prods = await ProductModel.find()
+      req.io.emit('lista', prods)
+      res.json({ message: 'Producto eliminado exitosamente' });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+      res.status(500).json({ message: error.message });
     }
-});
+  });
 
 export default productRouter

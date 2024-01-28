@@ -1,26 +1,25 @@
 import express from 'express'
-import 'dotenv/config.js'
-import mongo from './db/db.mongo.js'
+import serverConfig from './config/server.config.js'
+
 import {createServer} from 'http'
 import handlebars from "express-handlebars"
-import session from 'express-session'
 import cookieParser from 'cookie-parser'
 
-import passport from 'passport'
 import initializePassport from './config/passport.config.js'
 import {Server} from "socket.io"
 
 import __dirname from './utils.js'
 
-import ProductModel from './models/product.model.js'
-import CartModel from './models/cart.model.js'
+import ProductModel from './dao/models/product.model.js'
+import CartModel from './dao/models/cart.model.js'
 
 import router from './routes/router.js'
 import initializeSession from './config/session.config.js'
 
-
+ 
 const app = express()
-const port = process.env.PORT || 8080
+const port = serverConfig.port
+const mode = serverConfig.mode
 const hostname = "127.0.0.1"
 
 app.use(express.urlencoded({ extended: true }))
@@ -83,8 +82,12 @@ app.use((err,req,res,next)=>{
     res.status(500).send('Algo salio mal')
 })
 
-mongo()
 
-httpServer.listen(port, hostname,  () => { console.log(`Server corriendo en http://${hostname}:${port}/`) })
+if (port){
+    httpServer.listen(port, hostname,  () => { console.log(`Server ${mode} corriendo en http://${hostname}:${port}/`) })
+}
+else{
+    console.error("No hay variables de entorno configuradas");
+}
 
 

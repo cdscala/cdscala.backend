@@ -1,5 +1,5 @@
 import express from 'express';
-import Category from '../../models/category.model.js';
+import Category from '../../dao/models/category.model.js';
 
 const categoryRouter = express.Router();
  

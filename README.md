@@ -1,7 +1,7 @@
 #Para correr el servidor:
-- cd '.\desafio 7\'.
+- cd '.\PreEntrega3\'.
 - npm install.
-- npm run start.
+- node .\src\app.js --mode [development/production]
 
 #Para probar los endpoint:
 - importar la coleccion postman (Coder Backend.postman_collection.json)
