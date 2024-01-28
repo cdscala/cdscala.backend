@@ -7,7 +7,10 @@ const cartRouter = express.Router();
 const cartService = new Cart();
 
 // Obtener lista de productos del carrito por ID (GET)
-cartRouter.get('/:id', async (req, res) => {
+cartRouter.get('/:id',
+authorization('USER'),
+  passport.authenticate('jwt', { session: false }),
+async (req, res) => {
   try {
     const result = await cartService.getCart(req.params.id)
     res.json({ status: "success", message: result })
@@ -19,7 +22,7 @@ cartRouter.get('/:id', async (req, res) => {
 
 // Crear un carrito (POST)
 cartRouter.post('/',
-  authorization('ADMIN'),
+  authorization('USER'),
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
     try {
@@ -33,7 +36,7 @@ cartRouter.post('/',
 
 // Actualizar el carrito (POST)
 cartRouter.put('/:cid',
-  authorization('ADMIN'),
+  authorization('USER'),
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
     try {
@@ -47,7 +50,7 @@ cartRouter.put('/:cid',
 
 // Eliminar un producto en el carrito (DELETE)
 cartRouter.delete('/:cid/product/:pid',
-  authorization('ADMIN'),
+  authorization('USER'),
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
     try {

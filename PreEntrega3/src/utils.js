@@ -22,6 +22,12 @@ export const authorization = (role) => {
     return async (req, res, next) => {
         const user =req.headers?.authorization? verifyToken(req.headers.authorization):null
         if (!user) return res.status(401).send({ error: "Unauthorized" });
+        if (toString(role) === 'PUBLIC'){
+          next()
+        }
+        if (toString(user.role) === 'ADMIN'){
+          next()
+        }
         if (toString(user.role) !== toString(role))
           return res.status(403).send({ error: "No Permissions" });
         next();

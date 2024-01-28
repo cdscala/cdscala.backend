@@ -9,26 +9,32 @@ const productService = new Product();
 
 
 // Obtener todos los productos (GET)
-productRouter.get('/', async (req, res) => {
-  try {
-    const result = await productService.getProducts(req.query.query,req.query.sort,req.query.limit,req.query.page)
-    res.json({ status: "success", message: result })
-  } catch (error) {
-    console.log(error)
-    res.status(500).json({ status: "error", message: "Internal Server Error" })
-  }
-});
+productRouter.get('/',
+  authorization('USER'),
+  passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
+    try {
+      const result = await productService.getProducts(req.query.query, req.query.sort, req.query.limit, req.query.page)
+      res.json({ status: "success", message: result })
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({ status: "error", message: "Internal Server Error" })
+    }
+  });
 
 // Obtener un producto por ID (GET)
-productRouter.get('/:id', async (req, res) => {
-  try {
-    const result = await productService.getProduct(req.params.id);
-    res.json({ status: "success", message: result })
-  } catch (error) {
-    console.log(error)
-    res.status(500).json({ status: "error", message: "Internal Server Error" })
-  }
-});
+productRouter.get('/:id',
+  authorization('USER'),
+  passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
+    try {
+      const result = await productService.getProduct(req.params.id);
+      res.json({ status: "success", message: result })
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({ status: "error", message: "Internal Server Error" })
+    }
+  });
 
 // Crear un nuevo producto (POST)
 productRouter.post(

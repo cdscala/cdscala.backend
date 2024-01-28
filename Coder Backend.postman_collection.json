@@ -66,67 +66,6 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/products",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"api",
-										"products"
-									],
-									"query": [
-										{
-											"key": "limit",
-											"value": "9",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "1646"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"66e-KebNK9bx1zq2ag/utrUBpaQirco\""
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 30 Nov 2023 19:39:12 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"_id\": \"6560af5a6233561e62531727\",\n        \"title\": \"Producto 1\",\n        \"description\": \"Producto agregado 1\",\n        \"price\": 1500,\n        \"thumbnail\": \"Sin imagen\",\n        \"code\": \"ext3\",\n        \"stock\": 1000,\n        \"status\": true,\n        \"category\": \"655ff518c5597999b4b552ec\",\n        \"isVisible\": false,\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"6560af756233561e6253172a\",\n        \"title\": \"Producto 2\",\n        \"description\": \"Producto agregado 2\",\n        \"price\": 1500,\n        \"thumbnail\": \"Sin imagen\",\n        \"code\": \"ext3\",\n        \"stock\": 1000,\n        \"status\": true,\n        \"category\": \"655ff518c5597999b4b552ec\",\n        \"isVisible\": false,\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"6560af7d6233561e6253172c\",\n        \"title\": \"Producto 3\",\n        \"description\": \"Producto agregado 3\",\n        \"price\": 1500,\n        \"thumbnail\": \"Sin imagen\",\n        \"code\": \"ext3\",\n        \"stock\": 1000,\n        \"status\": true,\n        \"category\": \"655ff518c5597999b4b552ec\",\n        \"isVisible\": false,\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"6560af836233561e6253172e\",\n        \"title\": \"Producto 4\",\n        \"description\": \"Producto agregado 4\",\n        \"price\": 1500,\n        \"thumbnail\": \"Sin imagen\",\n        \"code\": \"ext3\",\n        \"stock\": 1000,\n        \"status\": true,\n        \"category\": \"655ff518c5597999b4b552ec\",\n        \"isVisible\": false,\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"6560b36fc8d691d953174e5b\",\n        \"title\": \"Producto 5\",\n        \"description\": \"Producto agregado 5\",\n        \"price\": 1500,\n        \"thumbnail\": \"Sin imagen\",\n        \"code\": \"ext3\",\n        \"stock\": 1000,\n        \"status\": true,\n        \"category\": \"655ff518c5597999b4b552ec\",\n        \"isVisible\": false,\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"6560b948a51ae6bfc11d13c9\",\n        \"title\": \"Producto 6\",\n        \"description\": \"Producto agregado 6\",\n        \"price\": 1500,\n        \"thumbnail\": \"Sin imagen\",\n        \"code\": \"ext3\",\n        \"stock\": 1000,\n        \"status\": true,\n        \"category\": \"655ff518c5597999b4b552ec\",\n        \"isVisible\": false,\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"6560b953a51ae6bfc11d13cc\",\n        \"title\": \"Producto 7\",\n        \"description\": \"Producto agregado 7\",\n        \"price\": 1500,\n        \"thumbnail\": \"Sin imagen\",\n        \"code\": \"ext3\",\n        \"stock\": 1000,\n        \"status\": true,\n        \"category\": \"655ff518c5597999b4b552ec\",\n        \"isVisible\": false,\n        \"__v\": 0\n    }\n]"
-						},
-						{
-							"name": "Productos limit",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
 									"raw": "http://localhost:8080/api/products?limit=2",
 									"protocol": "http",
 									"host": [
@@ -174,15 +113,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "635"
+									"value": "667"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"27b-AbTfdQYQ/V8Zcu02WWFHcqEn9Ow\""
+									"value": "W/\"29b-WNabN8xBs6symz/e8gkzEQzMmLE\""
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 30 Nov 2023 22:27:08 GMT"
+									"value": "Sun, 28 Jan 2024 17:14:27 GMT"
 								},
 								{
 									"key": "Connection",
@@ -194,17 +133,27 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"docs\": [\n        {\n            \"_id\": \"6560af5a6233561e62531727\",\n            \"title\": \"Producto 1 modificado\",\n            \"description\": \"Producto agregado con postman\",\n            \"price\": 1500,\n            \"thumbnail\": \"Sin imagen\",\n            \"code\": \"ext1\",\n            \"stock\": 1000,\n            \"status\": true,\n            \"category\": \"655ff518c5597999b4b552ec\",\n            \"isVisible\": false,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6560af756233561e6253172a\",\n            \"title\": \"Producto 2\",\n            \"description\": \"Producto agregado 2\",\n            \"price\": 1500,\n            \"thumbnail\": \"Sin imagen\",\n            \"code\": \"ext3\",\n            \"stock\": 1000,\n            \"status\": true,\n            \"category\": \"655ff518c5597999b4b552ec\",\n            \"isVisible\": false,\n            \"__v\": 0\n        }\n    ],\n    \"totalDocs\": 7,\n    \"limit\": 2,\n    \"totalPages\": 4,\n    \"page\": 1,\n    \"pagingCounter\": 1,\n    \"hasPrevPage\": false,\n    \"hasNextPage\": true,\n    \"prevPage\": null,\n    \"nextPage\": 2\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": {\n        \"docs\": [\n            {\n                \"_id\": \"6560af5a6233561e62531727\",\n                \"title\": \"Producto 1 modificado\",\n                \"description\": \"Producto agregado con postman\",\n                \"price\": 1500,\n                \"thumbnail\": \"Sin imagen\",\n                \"code\": \"ext1\",\n                \"stock\": 1000,\n                \"status\": true,\n                \"category\": \"655ff518c5597999b4b552ec\",\n                \"isVisible\": false,\n                \"__v\": 0\n            },\n            {\n                \"_id\": \"6560af756233561e6253172a\",\n                \"title\": \"Producto 2\",\n                \"description\": \"Producto agregado 2\",\n                \"price\": 1500,\n                \"thumbnail\": \"Sin imagen\",\n                \"code\": \"ext3\",\n                \"stock\": 1000,\n                \"status\": true,\n                \"category\": \"655ff518c5597999b4b552ec\",\n                \"isVisible\": false,\n                \"__v\": 0\n            }\n        ],\n        \"totalDocs\": 10,\n        \"limit\": 2,\n        \"totalPages\": 5,\n        \"page\": 1,\n        \"pagingCounter\": 1,\n        \"hasPrevPage\": false,\n        \"hasNextPage\": true,\n        \"prevPage\": null,\n        \"nextPage\": 2\n    }\n}"
 						}
 					]
 				},
 				{
 					"name": "Productos por Id",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/products/6568fc60c45241c14460e86a",
+							"raw": "http://localhost:8080/api/products/6560af5a6233561e62531727",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -213,7 +162,7 @@
 							"path": [
 								"api",
 								"products",
-								"6568fc60c45241c14460e86a"
+								"6560af5a6233561e62531727"
 							]
 						}
 					},
@@ -251,15 +200,19 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "234"
+									"value": "286"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"ea-Pu7zuvW1px/SNUWnaIh43Ruko9o\""
+									"value": "W/\"11e-e5tkUlx9u08SOBHK3lhK1twtm9A\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AqBQpvlbBRcPgoBX4gOQnpP8TbMPhHfwI.OS9xIqeEvdGnpnZXu6ZsGdL3TmID0uU3BN81sYslEOA; Path=/; HttpOnly"
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 30 Nov 2023 20:06:49 GMT"
+									"value": "Sun, 28 Jan 2024 17:20:57 GMT"
 								},
 								{
 									"key": "Connection",
@@ -271,7 +224,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"_id\": \"6560af5a6233561e62531727\",\n    \"title\": \"Producto 1\",\n    \"description\": \"Producto agregado 1\",\n    \"price\": 1500,\n    \"thumbnail\": \"Sin imagen\",\n    \"code\": \"ext3\",\n    \"stock\": 1000,\n    \"status\": true,\n    \"category\": \"655ff518c5597999b4b552ec\",\n    \"isVisible\": false,\n    \"__v\": 0\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": {\n        \"_id\": \"6560af5a6233561e62531727\",\n        \"title\": \"Producto 1 modificado\",\n        \"description\": \"Producto agregado con postman\",\n        \"price\": 1500,\n        \"thumbnail\": \"Sin imagen\",\n        \"code\": \"ext1\",\n        \"stock\": 1000,\n        \"status\": true,\n        \"category\": \"655ff518c5597999b4b552ec\",\n        \"isVisible\": false,\n        \"__v\": 0\n    }\n}"
 						}
 					]
 				},
@@ -289,11 +242,21 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\":\"Producto 7\", \r\n    \"description\":\"Producto agregado 7\",\r\n    \"price\":1500,\r\n    \"thumbnail\":\"Sin imagen\",\r\n    \"code\":\"ext3\",\r\n    \"stock\":1000,\r\n    \"status\": true,\r\n    \"category\":\"655ff518c5597999b4b552ec\"\r\n}",
+							"raw": "{\r\n    \"title\":\"Producto 7\", \r\n    \"description\":\"Producto agregado 7ads\",\r\n    \"price\":1500,\r\n    \"thumbnail\":\"Sin imagen\",\r\n    \"code\":\"ext3\",\r\n    \"stock\":1000,\r\n    \"status\": true,\r\n    \"category\":\"655ff518c5597999b4b552ec\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -321,7 +284,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"title\":\"Producto 7\", \r\n    \"description\":\"Producto agregado 7\",\r\n    \"price\":1500,\r\n    \"thumbnail\":\"Sin imagen\",\r\n    \"code\":\"ext3\",\r\n    \"stock\":1000,\r\n    \"status\": true,\r\n    \"category\":\"655ff518c5597999b4b552ec\"\r\n}",
+									"raw": "{\r\n    \"title\":\"Producto 7\", \r\n    \"description\":\"Producto agregado 7ads\",\r\n    \"price\":1500,\r\n    \"thumbnail\":\"Sin imagen\",\r\n    \"code\":\"ext3\",\r\n    \"stock\":1000,\r\n    \"status\": true,\r\n    \"category\":\"655ff518c5597999b4b552ec\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -341,8 +304,8 @@
 									]
 								}
 							},
-							"status": "Created",
-							"code": 201,
+							"status": "OK",
+							"code": 200,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
@@ -355,15 +318,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "234"
+									"value": "268"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"ea-FTDcaqBtWKll/4eATwde+ZKstRI\""
+									"value": "W/\"10c-rvnb0mkdEUYGnYPvH20Jg3y1r08\""
 								},
 								{
 									"key": "Date",
-									"value": "Fri, 24 Nov 2023 14:55:15 GMT"
+									"value": "Sun, 28 Jan 2024 20:56:34 GMT"
 								},
 								{
 									"key": "Connection",
@@ -375,13 +338,23 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"title\": \"Producto 7\",\n    \"description\": \"Producto agregado 7\",\n    \"price\": 1500,\n    \"thumbnail\": \"Sin imagen\",\n    \"code\": \"ext3\",\n    \"stock\": 1000,\n    \"status\": true,\n    \"category\": \"655ff518c5597999b4b552ec\",\n    \"isVisible\": false,\n    \"_id\": \"6560b953a51ae6bfc11d13cc\",\n    \"__v\": 0\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": {\n        \"title\": \"Producto 7\",\n        \"description\": \"Producto agregado 7ads\",\n        \"price\": 1500,\n        \"thumbnail\": \"Sin imagen\",\n        \"code\": \"ext3\",\n        \"stock\": 1000,\n        \"status\": true,\n        \"category\": \"655ff518c5597999b4b552ec\",\n        \"isVisible\": false,\n        \"_id\": \"65b6bf82e5a5c470b49a4263\",\n        \"__v\": 0\n    }\n}"
 						}
 					]
 				},
 				{
 					"name": "Productos por Id",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -450,15 +423,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "255"
+									"value": "286"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"ff-EpuUZQpd1UX85n/CJaZwg03Bx7Y\""
+									"value": "W/\"11e-e5tkUlx9u08SOBHK3lhK1twtm9A\""
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 30 Nov 2023 20:08:36 GMT"
+									"value": "Sun, 28 Jan 2024 20:57:44 GMT"
 								},
 								{
 									"key": "Connection",
@@ -470,7 +443,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"_id\": \"6560af5a6233561e62531727\",\n    \"title\": \"Producto 1 modificado\",\n    \"description\": \"Producto agregado con postman\",\n    \"price\": 1500,\n    \"thumbnail\": \"Sin imagen\",\n    \"code\": \"ext1\",\n    \"stock\": 1000,\n    \"status\": true,\n    \"category\": \"655ff518c5597999b4b552ec\",\n    \"isVisible\": false,\n    \"__v\": 0\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": {\n        \"_id\": \"6560af5a6233561e62531727\",\n        \"title\": \"Producto 1 modificado\",\n        \"description\": \"Producto agregado con postman\",\n        \"price\": 1500,\n        \"thumbnail\": \"Sin imagen\",\n        \"code\": \"ext1\",\n        \"stock\": 1000,\n        \"status\": true,\n        \"category\": \"655ff518c5597999b4b552ec\",\n        \"isVisible\": false,\n        \"__v\": 0\n    }\n}"
 						}
 					]
 				},
@@ -500,7 +473,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/products/6560af5a6233561e62531727",
+									"raw": "http://localhost:8080/api/products/6560af7d6233561e6253172c",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -509,7 +482,7 @@
 									"path": [
 										"api",
 										"products",
-										"6560af5a6233561e62531727"
+										"6560af7d6233561e6253172c"
 									]
 								}
 							},
@@ -527,15 +500,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "35"
+									"value": "64"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"23-bNPvRC3f9DC9gS00Jlj3ph0iz3E\""
+									"value": "W/\"40-iLul3TiIpCUp2LT8adT4lqd0fdk\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 31 Oct 2023 20:00:42 GMT"
+									"value": "Sun, 28 Jan 2024 21:02:39 GMT"
 								},
 								{
 									"key": "Connection",
@@ -547,7 +520,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"mensaje\": \"Producto eliminado exitosamente\"\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Producto eliminado exitosamente\"\n}"
 						}
 					]
 				}
@@ -604,8 +577,8 @@
 									]
 								}
 							},
-							"status": "Created",
-							"code": 201,
+							"status": "OK",
+							"code": 200,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
@@ -618,15 +591,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "56"
+									"value": "87"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"38-c/zjCXMwOQmiZQI3TdBoEr7NEGA\""
+									"value": "W/\"57-ncDA6PQQeJvwky1uCE/cQoW4v5s\""
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 30 Nov 2023 22:34:43 GMT"
+									"value": "Sun, 28 Jan 2024 21:17:02 GMT"
 								},
 								{
 									"key": "Connection",
@@ -638,7 +611,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"_id\": \"65690e032b71b9a32c3497f4\",\n    \"products\": [],\n    \"__v\": 0\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": {\n        \"_id\": \"65b6c44e5ef7d666aeb912ee\",\n        \"products\": [],\n        \"__v\": 0\n    }\n}"
 						}
 					]
 				},
@@ -660,7 +633,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"products\":[\r\n        {\r\n            \"id\":\"6560af5a6233561e62531727\",\r\n            \"quantity\":20\r\n        }\r\n\r\n]\r\n}",
+							"raw": "{\r\n    \"products\":[\r\n        {\r\n            \"product\":\"6560af5a6233561e62531727\",\r\n            \"quantity\":20\r\n        }\r\n\r\n]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -689,7 +662,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"products\":[\r\n        {\r\n            \"id\":\"6560af5a6233561e62531727\",\r\n            \"quantity\":20\r\n        }\r\n\r\n]\r\n}",
+									"raw": "{\r\n    \"products\":[\r\n        {\r\n            \"product\":\"6560af5a6233561e62531727\",\r\n            \"quantity\":20\r\n        }\r\n\r\n]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -697,7 +670,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/carts/65690e032b71b9a32c3497f4",
+									"raw": "http://localhost:8080/api/carts/65b6c44e5ef7d666aeb912ee",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -706,7 +679,7 @@
 									"path": [
 										"api",
 										"carts",
-										"65690e032b71b9a32c3497f4"
+										"65b6c44e5ef7d666aeb912ee"
 									]
 								}
 							},
@@ -724,15 +697,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "136"
+									"value": "172"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"88-FKuxgA9nAPwYMNeVMZIpcUjAWSs\""
+									"value": "W/\"ac-dfp1xVHU0HKmbVgiBiUH6ly5fHY\""
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 30 Nov 2023 22:36:14 GMT"
+									"value": "Sun, 28 Jan 2024 21:18:06 GMT"
 								},
 								{
 									"key": "Connection",
@@ -744,7 +717,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"_id\": \"65690e032b71b9a32c3497f4\",\n    \"products\": [\n        {\n            \"id\": \"6560af5a6233561e62531727\",\n            \"quantity\": 20,\n            \"_id\": \"65690e5e8b3985e52b5b7c0f\"\n        }\n    ],\n    \"__v\": 0\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": {\n        \"_id\": \"65b6c44e5ef7d666aeb912ee\",\n        \"products\": [\n            {\n                \"product\": \"6560af5a6233561e62531727\",\n                \"quantity\": 20,\n                \"_id\": \"65b6c48e9d331135c6529614\"\n            }\n        ],\n        \"__v\": 0\n    }\n}"
 						}
 					]
 				},
@@ -754,7 +727,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/carts/65690e032b71b9a32c3497f4",
+							"raw": "http://localhost:8080/api/carts/65692a694c110e002cd7e4b0",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -763,7 +736,7 @@
 							"path": [
 								"api",
 								"carts",
-								"65690e032b71b9a32c3497f4"
+								"65692a694c110e002cd7e4b0"
 							]
 						}
 					},
@@ -774,7 +747,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/carts/6568e48c5bd413be89d86dfd",
+									"raw": "http://localhost:8080/api/carts/65b6c44e5ef7d666aeb912ee",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -783,7 +756,7 @@
 									"path": [
 										"api",
 										"carts",
-										"6568e48c5bd413be89d86dfd"
+										"65b6c44e5ef7d666aeb912ee"
 									]
 								}
 							},
@@ -801,15 +774,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "136"
+									"value": "401"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"88-jIShrRPwjdWSF4r1H2Mu/VFhE5A\""
+									"value": "W/\"191-Dn0grWTlVbRmkVbtnJUxP2ZSMQU\""
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 30 Nov 2023 19:43:11 GMT"
+									"value": "Sun, 28 Jan 2024 21:19:06 GMT"
 								},
 								{
 									"key": "Connection",
@@ -821,62 +794,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"_id\": \"6568e48c5bd413be89d86dfd\",\n    \"products\": [\n        {\n            \"id\": \"6560af5a6233561e62531727\",\n            \"quantity\": 20,\n            \"_id\": \"6568e57d5bd413be89d86e03\"\n        }\n    ],\n    \"__v\": 0\n}"
-						},
-						{
-							"name": "Carritos por Id populate",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:8080/api/carts/65690e032b71b9a32c3497f4",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"api",
-										"carts",
-										"65690e032b71b9a32c3497f4"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "365"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"16d-fnTRBeRm0LaTPr4uH1xd94ySWZU\""
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 30 Nov 2023 22:36:51 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"_id\": \"65690e032b71b9a32c3497f4\",\n    \"products\": [\n        {\n            \"id\": {\n                \"_id\": \"6560af5a6233561e62531727\",\n                \"title\": \"Producto 1 modificado\",\n                \"description\": \"Producto agregado con postman\",\n                \"price\": 1500,\n                \"thumbnail\": \"Sin imagen\",\n                \"code\": \"ext1\",\n                \"stock\": 1000,\n                \"status\": true,\n                \"category\": \"655ff518c5597999b4b552ec\",\n                \"isVisible\": false,\n                \"__v\": 0\n            },\n            \"quantity\": 20,\n            \"_id\": \"65690e5e8b3985e52b5b7c0f\"\n        }\n    ],\n    \"__v\": 0\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": {\n        \"_id\": \"65b6c44e5ef7d666aeb912ee\",\n        \"products\": [\n            {\n                \"product\": {\n                    \"_id\": \"6560af5a6233561e62531727\",\n                    \"title\": \"Producto 1 modificado\",\n                    \"description\": \"Producto agregado con postman\",\n                    \"price\": 1500,\n                    \"thumbnail\": \"Sin imagen\",\n                    \"code\": \"ext1\",\n                    \"stock\": 1000,\n                    \"status\": true,\n                    \"category\": \"655ff518c5597999b4b552ec\",\n                    \"isVisible\": false,\n                    \"__v\": 0\n                },\n                \"quantity\": 20,\n                \"_id\": \"65b6c48e9d331135c6529614\"\n            }\n        ],\n        \"__v\": 0\n    }\n}"
 						}
 					]
 				},
@@ -908,7 +826,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/carts/6568e48c5bd413be89d86dfd/product/6560af5a6233561e62531727",
+									"raw": "http://localhost:8080/api/carts/65b6c44e5ef7d666aeb912ee/product/6560af5a6233561e62531727",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -917,7 +835,7 @@
 									"path": [
 										"api",
 										"carts",
-										"6568e48c5bd413be89d86dfd",
+										"65b6c44e5ef7d666aeb912ee",
 										"product",
 										"6560af5a6233561e62531727"
 									]
@@ -937,15 +855,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "56"
+									"value": "172"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"38-PX65zihD/SRkx7MaVYsMj7F+rPQ\""
+									"value": "W/\"ac-dfp1xVHU0HKmbVgiBiUH6ly5fHY\""
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 30 Nov 2023 20:05:44 GMT"
+									"value": "Sun, 28 Jan 2024 21:20:01 GMT"
 								},
 								{
 									"key": "Connection",
@@ -957,7 +875,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"_id\": \"6568e48c5bd413be89d86dfd\",\n    \"products\": [],\n    \"__v\": 0\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": {\n        \"_id\": \"65b6c44e5ef7d666aeb912ee\",\n        \"products\": [\n            {\n                \"product\": \"6560af5a6233561e62531727\",\n                \"quantity\": 20,\n                \"_id\": \"65b6c48e9d331135c6529614\"\n            }\n        ],\n        \"__v\": 0\n    }\n}"
 						}
 					]
 				},
@@ -987,7 +905,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/carts/6568e48c5bd413be89d86dfd",
+									"raw": "http://localhost:8080/api/carts/65b6c44e5ef7d666aeb912ee",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -996,7 +914,7 @@
 									"path": [
 										"api",
 										"carts",
-										"6568e48c5bd413be89d86dfd"
+										"65b6c44e5ef7d666aeb912ee"
 									]
 								}
 							},
@@ -1014,15 +932,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "42"
+									"value": "61"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"2a-sS2Ss5cLBfQKj8wuyPJPm9yQD24\""
+									"value": "W/\"3d-kiLjJc+RPx5UDw2qdVSa+gDAUSY\""
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 30 Nov 2023 20:06:25 GMT"
+									"value": "Sun, 28 Jan 2024 21:32:16 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1034,7 +952,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"message\": \"Carro eliminado exitosamente\"\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Carro eliminado exitosamente\"\n}"
 						}
 					]
 				}
@@ -1105,15 +1023,19 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "81"
+									"value": "161"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"51-xJ8/u0mpLHQnNiy1zfbUrJV3G50\""
+									"value": "W/\"a1-76TMDW/KpjddZGb4suU058WpAEU\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AZsBOtZzDYthuOemUPNBk1PFxVkygTIaz.AxDHgm1NGTfAMbofc63DOycH6Dg4pn6Lg3JB4%2Bl2CXA; Path=/; HttpOnly"
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 30 Nov 2023 19:29:21 GMT"
+									"value": "Sun, 28 Jan 2024 21:44:45 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1125,7 +1047,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"_id\": \"655ff518c5597999b4b552ec\",\n        \"name\": \"categoria1\",\n        \"isVisible\": true,\n        \"__v\": 0\n    }\n]"
+							"body": "[\n    {\n        \"_id\": \"655ff518c5597999b4b552ec\",\n        \"name\": \"categoria1\",\n        \"isVisible\": true,\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"6568e29c9881c6819f1c6d87\",\n        \"name\": \"categoria2\",\n        \"isVisible\": true,\n        \"__v\": 0\n    }\n]"
 						}
 					]
 				},
@@ -1175,7 +1097,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"name\":\"categoria2\", \r\n    \"isVisible\":true\r\n}",
+									"raw": "{\r\n    \"name\":\"categoria3\", \r\n    \"isVisible\":true\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1213,11 +1135,11 @@
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"4f-m1YoAUcO8S9FSUnEizvLI1x+x/8\""
+									"value": "W/\"4f-96QX95ERrxd++9w9vH6lAD3KJxg\""
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 30 Nov 2023 19:29:32 GMT"
+									"value": "Sun, 28 Jan 2024 21:45:02 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1229,9 +1151,57 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"name\": \"categoria2\",\n    \"isVisible\": true,\n    \"_id\": \"6568e29c9881c6819f1c6d87\",\n    \"__v\": 0\n}"
+							"body": "{\n    \"name\": \"categoria3\",\n    \"isVisible\": true,\n    \"_id\": \"65b6cade4943e99a0055e1b0\",\n    \"__v\": 0\n}"
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Auth Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseData = pm.response.json();\r",
+									"pm.collectionVariables.set('token',responseData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"carlosd.scala@gmail.com\",\r\n    \"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/sessions/ext/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sessions",
+								"ext",
+								"login"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
@@ -1254,6 +1224,13 @@
 					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
 		}
 	]
 }
