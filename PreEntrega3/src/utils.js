@@ -4,6 +4,7 @@ import { dirname } from 'path'
 import bcrypt from 'bcrypt'
 import config from './config/server.config.js'
 import passport from 'passport'
+import UserDTO from './dao/DTOs/user.dto.js'
 
 export const createHash = (password) =>
     bcrypt.hashSync(password, bcrypt.genSaltSync(10))
@@ -43,7 +44,8 @@ export const passportCall = (strategy) => {
             .status(401)
             .send({ error: info.messages?.info, messages: info.toString() });
         }
-        req.user = user;
+
+        req.user = new UserDTO(user);
         next();
       })(req, res, next);
     };

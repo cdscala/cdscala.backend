@@ -1,11 +1,11 @@
 import express from 'express'
 import passport from 'passport'
-import { Product } from '../../dao/factory.js';
+import { Product } from '../../dao/factory.js'
+import ProductDTO from '../../dao/DTOs/product.dto.js'
+import { authorization } from '../../utils.js'
 
-import { authorization } from '../../utils.js';
-
-const productRouter = express.Router();
-const productService = new Product();
+const productRouter = express.Router()
+const productService = new Product()
 
 
 // Obtener todos los productos (GET)
@@ -43,7 +43,8 @@ productRouter.post(
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
     try {
-      const result = await productService.createProduct(req.body);
+      const product = new ProductDTO(req.body)
+      const result = await productService.createProduct(product);
       res.json({ status: "success", message: result })
     } catch (error) {
       console.log(error)

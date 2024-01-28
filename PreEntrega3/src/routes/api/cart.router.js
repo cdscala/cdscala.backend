@@ -1,5 +1,6 @@
 import express from 'express';
 import { Cart } from '../../dao/factory.js';
+import CartDTO from '../../dao/DTOs/cart.dto.js';
 import passport from 'passport'
 import { authorization } from '../../utils.js';
 
@@ -26,7 +27,8 @@ cartRouter.post('/',
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
     try {
-      const result = await cartService.createCart(req.body)
+      const cart = new CartDTO(req.body)
+      const result = await cartService.createCart(cart)
       res.json({ status: "success", message: result })
     } catch (error) {
       console.log(error)

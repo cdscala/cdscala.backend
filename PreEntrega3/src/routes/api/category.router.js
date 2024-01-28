@@ -1,5 +1,6 @@
 import express from 'express';
 import { Category } from '../../dao/factory.js';
+import CategoryDTO from '../../dao/DTOs/category.dto.js';
 import passport from 'passport'
 import { authorization } from '../../utils.js';
 
@@ -24,7 +25,8 @@ categoryRouter.post('/',
 	passport.authenticate('jwt', { session: false }),
 	async (req, res) => {
 		try {
-			const result = await categoryService.createCategory(req.body)
+			const category = new CategoryDTO(req.body)
+			const result = await categoryService.createCategory(category)
 			res.json({ status: "success", message: result })
 		} catch (error) {
 			console.log(error)
