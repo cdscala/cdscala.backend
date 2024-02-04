@@ -23,6 +23,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -450,10 +460,20 @@
 				{
 					"name": "Productos por Id",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/products/6568fc60c45241c14460e86a",
+							"raw": "http://localhost:8080/api/products/6560af7d6233561e6253172c",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -462,7 +482,7 @@
 							"path": [
 								"api",
 								"products",
-								"6568fc60c45241c14460e86a"
+								"6560af7d6233561e6253172c"
 							]
 						}
 					},
@@ -543,6 +563,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"url": {
@@ -591,15 +621,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "87"
+									"value": "121"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"57-ncDA6PQQeJvwky1uCE/cQoW4v5s\""
+									"value": "W/\"79-JOJTq55xcA7kmVHuzyJWDQ2p3OY\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 28 Jan 2024 21:17:02 GMT"
+									"value": "Sat, 03 Feb 2024 14:05:54 GMT"
 								},
 								{
 									"key": "Connection",
@@ -611,7 +641,163 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"message\": {\n        \"_id\": \"65b6c44e5ef7d666aeb912ee\",\n        \"products\": [],\n        \"__v\": 0\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": {\n        \"user\": \"65b595cce4af9d5eeb38770e\",\n        \"_id\": \"65be4842f4911b16e08ac47d\",\n        \"products\": [],\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Comprar Carrito",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carts/65be47d20d841296be0a85dd/purchase",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								"65be47d20d841296be0a85dd",
+								"purchase"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Comprar Carrito",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/carts/65be47d20d841296be0a85dd/purchase",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carts",
+										"65be47d20d841296be0a85dd",
+										"purchase"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "523"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"20b-0z7GLmZ6/sQP2KlP9RYO+662dYY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 04 Feb 2024 02:02:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": {\n        \"number\": \"012ab654-a12a-4974-bd46-c3ae7238bd91\",\n        \"user\": \"65b595cce4af9d5eeb38770e\",\n        \"purchase_datetime\": \"2024-02-04T02:02:39.636Z\",\n        \"products\": [\n            {\n                \"product\": {\n                    \"_id\": \"6560af5a6233561e62531727\",\n                    \"title\": \"Producto 1 modificado\",\n                    \"description\": \"Producto agregado con postman\",\n                    \"price\": 1500,\n                    \"thumbnail\": \"Sin imagen\",\n                    \"code\": \"ext1\",\n                    \"stock\": 500,\n                    \"status\": true,\n                    \"category\": \"655ff518c5597999b4b552ec\",\n                    \"isVisible\": false,\n                    \"__v\": 0\n                },\n                \"quantity\": 20,\n                \"_id\": \"65be4893f4911b16e08ac483\"\n            }\n        ],\n        \"totalPrice\": 30000,\n        \"status\": \"sold\"\n    }\n}"
+						},
+						{
+							"name": "Comprar Carrito",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/carts/65be47d20d841296be0a85dd/purchase",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carts",
+										"65be47d20d841296be0a85dd",
+										"purchase"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "814"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"32e-+B/uNtFswPjSItJdcCw8/YyEd0A\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 04 Feb 2024 03:21:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": {\n        \"number\": \"c71321ff-afe9-47db-a96f-525b753f0080\",\n        \"user\": \"65b595cce4af9d5eeb38770e\",\n        \"purchase_datetime\": \"2024-02-04T03:21:06.631Z\",\n        \"products\": [\n            {\n                \"product\": {\n                    \"_id\": \"6560af5a6233561e62531727\",\n                    \"title\": \"Producto 1 modificado\",\n                    \"description\": \"Producto agregado con postman\",\n                    \"price\": 1500,\n                    \"thumbnail\": \"Sin imagen\",\n                    \"code\": \"ext1\",\n                    \"stock\": 360,\n                    \"status\": true,\n                    \"category\": \"655ff518c5597999b4b552ec\",\n                    \"isVisible\": false,\n                    \"__v\": 0\n                },\n                \"quantity\": 2,\n                \"_id\": \"65befe6ec609d0956f2486c7\"\n            },\n            {\n                \"product\": {\n                    \"_id\": \"6560af836233561e6253172e\",\n                    \"title\": \"Producto 4\",\n                    \"description\": \"Producto agregado 4\",\n                    \"price\": 1500,\n                    \"thumbnail\": \"Sin imagen\",\n                    \"code\": \"ext3\",\n                    \"stock\": 590,\n                    \"status\": true,\n                    \"category\": \"655ff518c5597999b4b552ec\",\n                    \"isVisible\": false,\n                    \"__v\": 0\n                },\n                \"quantity\": 6,\n                \"_id\": \"65befe6ec609d0956f2486c8\"\n            }\n        ],\n        \"totalPrice\": 12000,\n        \"status\": \"sold\"\n    }\n}"
 						}
 					]
 				},
@@ -629,11 +815,21 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"products\":[\r\n        {\r\n            \"product\":\"6560af5a6233561e62531727\",\r\n            \"quantity\":20\r\n        }\r\n\r\n]\r\n}",
+							"raw": "{\r\n    \"products\":[\r\n        {\r\n            \"product\":\"6560af5a6233561e62531727\",\r\n            \"quantity\":2\r\n        },\r\n        {\r\n            \"product\":\"6560af836233561e6253172e\",\r\n            \"quantity\":6\r\n        }\r\n\r\n]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -641,7 +837,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/carts/65690e032b71b9a32c3497f4",
+							"raw": "http://localhost:8080/api/carts/65be47d20d841296be0a85dd",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -650,7 +846,7 @@
 							"path": [
 								"api",
 								"carts",
-								"65690e032b71b9a32c3497f4"
+								"65be47d20d841296be0a85dd"
 							]
 						}
 					},
@@ -670,7 +866,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/carts/65b6c44e5ef7d666aeb912ee",
+									"raw": "http://localhost:8080/api/carts/65be47d20d841296be0a85dd",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -679,7 +875,7 @@
 									"path": [
 										"api",
 										"carts",
-										"65b6c44e5ef7d666aeb912ee"
+										"65be47d20d841296be0a85dd"
 									]
 								}
 							},
@@ -697,15 +893,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "172"
+									"value": "206"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"ac-dfp1xVHU0HKmbVgiBiUH6ly5fHY\""
+									"value": "W/\"ce-fV+Qjr96rGxncuSl+PtEV+aiQk0\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 28 Jan 2024 21:18:06 GMT"
+									"value": "Sat, 03 Feb 2024 14:07:15 GMT"
 								},
 								{
 									"key": "Connection",
@@ -717,17 +913,91 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"message\": {\n        \"_id\": \"65b6c44e5ef7d666aeb912ee\",\n        \"products\": [\n            {\n                \"product\": \"6560af5a6233561e62531727\",\n                \"quantity\": 20,\n                \"_id\": \"65b6c48e9d331135c6529614\"\n            }\n        ],\n        \"__v\": 0\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": {\n        \"_id\": \"65be47d20d841296be0a85dd\",\n        \"user\": \"65b595cce4af9d5eeb38770e\",\n        \"products\": [\n            {\n                \"product\": \"6560af5a6233561e62531727\",\n                \"quantity\": 20,\n                \"_id\": \"65be4893f4911b16e08ac483\"\n            }\n        ],\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Carrito",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"products\":[\r\n        {\r\n            \"product\":\"6560af5a6233561e62531727\",\r\n            \"quantity\":20\r\n        },\r\n        {\r\n            \"product\":\"6560af836233561e6253172e\",\r\n            \"quantity\":50\r\n        }\r\n\r\n]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/carts/65be47d20d841296be0a85dd",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carts",
+										"65be47d20d841296be0a85dd"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "292"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"124-GW97uxwbIhDmGoDUX47NmutDh3U\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 04 Feb 2024 02:11:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": {\n        \"_id\": \"65be47d20d841296be0a85dd\",\n        \"user\": \"65b595cce4af9d5eeb38770e\",\n        \"products\": [\n            {\n                \"product\": \"6560af5a6233561e62531727\",\n                \"quantity\": 20,\n                \"_id\": \"65bef24a31dc0cdf5d4678ae\"\n            },\n            {\n                \"product\": \"6560af836233561e6253172e\",\n                \"quantity\": 50,\n                \"_id\": \"65bef24a31dc0cdf5d4678af\"\n            }\n        ],\n        \"__v\": 0\n    }\n}"
 						}
 					]
 				},
 				{
 					"name": "Carritos por Id",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/carts/65692a694c110e002cd7e4b0",
+							"raw": "http://localhost:8080/api/carts/65be47d20d841296be0a85dd",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -736,7 +1006,7 @@
 							"path": [
 								"api",
 								"carts",
-								"65692a694c110e002cd7e4b0"
+								"65be47d20d841296be0a85dd"
 							]
 						}
 					},
@@ -795,38 +1065,14 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"status\": \"success\",\n    \"message\": {\n        \"_id\": \"65b6c44e5ef7d666aeb912ee\",\n        \"products\": [\n            {\n                \"product\": {\n                    \"_id\": \"6560af5a6233561e62531727\",\n                    \"title\": \"Producto 1 modificado\",\n                    \"description\": \"Producto agregado con postman\",\n                    \"price\": 1500,\n                    \"thumbnail\": \"Sin imagen\",\n                    \"code\": \"ext1\",\n                    \"stock\": 1000,\n                    \"status\": true,\n                    \"category\": \"655ff518c5597999b4b552ec\",\n                    \"isVisible\": false,\n                    \"__v\": 0\n                },\n                \"quantity\": 20,\n                \"_id\": \"65b6c48e9d331135c6529614\"\n            }\n        ],\n        \"__v\": 0\n    }\n}"
-						}
-					]
-				},
-				{
-					"name": "Producto en Carrito",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/carts/6568e48c5bd413be89d86dfd/product/6560af5a6233561e62531727",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"carts",
-								"6568e48c5bd413be89d86dfd",
-								"product",
-								"6560af5a6233561e62531727"
-							]
-						}
-					},
-					"response": [
+						},
 						{
-							"name": "Producto en Carrito",
+							"name": "Carritos por Id",
 							"originalRequest": {
-								"method": "DELETE",
+								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/carts/65b6c44e5ef7d666aeb912ee/product/6560af5a6233561e62531727",
+									"raw": "http://localhost:8080/api/carts/65be47d20d841296be0a85dd",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -835,9 +1081,7 @@
 									"path": [
 										"api",
 										"carts",
-										"65b6c44e5ef7d666aeb912ee",
-										"product",
-										"6560af5a6233561e62531727"
+										"65be47d20d841296be0a85dd"
 									]
 								}
 							},
@@ -855,15 +1099,19 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "172"
+									"value": "728"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"ac-dfp1xVHU0HKmbVgiBiUH6ly5fHY\""
+									"value": "W/\"2d8-rrDAAJCEDlDcvLHjvE7LYM0YQFA\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3ASd3vu3BaZgycE1UZdZqQ7QYTGgADDxE4.DjPqA5ktfEvyJ%2Fa623WTYzxjYfP8K9K%2FAyOoMuIuB2s; Path=/; HttpOnly"
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 28 Jan 2024 21:20:01 GMT"
+									"value": "Sun, 04 Feb 2024 02:14:55 GMT"
 								},
 								{
 									"key": "Connection",
@@ -875,17 +1123,82 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"message\": {\n        \"_id\": \"65b6c44e5ef7d666aeb912ee\",\n        \"products\": [\n            {\n                \"product\": \"6560af5a6233561e62531727\",\n                \"quantity\": 20,\n                \"_id\": \"65b6c48e9d331135c6529614\"\n            }\n        ],\n        \"__v\": 0\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": {\n        \"_id\": \"65be47d20d841296be0a85dd\",\n        \"user\": \"65b595cce4af9d5eeb38770e\",\n        \"products\": [\n            {\n                \"product\": {\n                    \"_id\": \"6560af5a6233561e62531727\",\n                    \"title\": \"Producto 1 modificado\",\n                    \"description\": \"Producto agregado con postman\",\n                    \"price\": 1500,\n                    \"thumbnail\": \"Sin imagen\",\n                    \"code\": \"ext1\",\n                    \"stock\": 520,\n                    \"status\": true,\n                    \"category\": \"655ff518c5597999b4b552ec\",\n                    \"isVisible\": false,\n                    \"__v\": 0\n                },\n                \"quantity\": 20,\n                \"_id\": \"65bef24a31dc0cdf5d4678ae\"\n            },\n            {\n                \"product\": {\n                    \"_id\": \"6560af836233561e6253172e\",\n                    \"title\": \"Producto 4\",\n                    \"description\": \"Producto agregado 4\",\n                    \"price\": 1500,\n                    \"thumbnail\": \"Sin imagen\",\n                    \"code\": \"ext3\",\n                    \"stock\": 1000,\n                    \"status\": true,\n                    \"category\": \"655ff518c5597999b4b552ec\",\n                    \"isVisible\": false,\n                    \"__v\": 0\n                },\n                \"quantity\": 50,\n                \"_id\": \"65bef24a31dc0cdf5d4678af\"\n            }\n        ],\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Carritos por Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/carts/65be47d20d841296be0a85dd",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carts",
+										"65be47d20d841296be0a85dd"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "121"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"79-JI1o7px5Q3kg6Wo961RIxrWtEQc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 04 Feb 2024 03:21:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": {\n        \"_id\": \"65be47d20d841296be0a85dd\",\n        \"user\": \"65b595cce4af9d5eeb38770e\",\n        \"products\": [],\n        \"__v\": 0\n    }\n}"
 						}
 					]
 				},
 				{
-					"name": "Carrito",
+					"name": "Carritos por Id de usuario",
 					"request": {
-						"method": "DELETE",
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/carts/6568e48c5bd413be89d86dfd",
+							"raw": "http://localhost:8080/api/carts/user/65b595cce4af9d5eeb38770e",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -894,7 +1207,119 @@
 							"path": [
 								"api",
 								"carts",
-								"6568e48c5bd413be89d86dfd"
+								"user",
+								"65b595cce4af9d5eeb38770e"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Carritos por Id de usuario",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/carts/user/65b595cce4af9d5eeb38770e",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carts",
+										"user",
+										"65b595cce4af9d5eeb38770e"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "305"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"131-yVyDCevlpO5lG4FoQyaBTO7/qyM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 03 Feb 2024 14:06:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": [\n        {\n            \"_id\": \"65be47d20d841296be0a85dd\",\n            \"user\": \"65b595cce4af9d5eeb38770e\",\n            \"products\": [],\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"65be4841f4911b16e08ac47b\",\n            \"user\": \"65b595cce4af9d5eeb38770e\",\n            \"products\": [],\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"65be4842f4911b16e08ac47d\",\n            \"user\": \"65b595cce4af9d5eeb38770e\",\n            \"products\": [],\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Producto en Carrito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carts/65b6c44e5ef7d666aeb912ee/product/6560af5a6233561e62531727",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								"65b6c44e5ef7d666aeb912ee",
+								"product",
+								"6560af5a6233561e62531727"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Carrito",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carts/65b6c44e5ef7d666aeb912ee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								"65b6c44e5ef7d666aeb912ee"
 							]
 						}
 					},
@@ -975,6 +1400,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -1065,11 +1500,21 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"categoria2\", \r\n    \"isVisible\":true\r\n}",
+							"raw": "{\r\n    \"name\":\"categoria30\", \r\n    \"isVisible\":true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
