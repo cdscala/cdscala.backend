@@ -23,7 +23,7 @@ async (req, res) => {
   }
 })
 
-// Crear un carrito (POST)
+// Crear una Compra (POST)
 ticketRouter.post('/',
   authorization('USER'),
   passport.authenticate('jwt', { session: false }),

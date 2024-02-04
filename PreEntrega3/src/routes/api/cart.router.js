@@ -4,11 +4,25 @@ import CartDTO from '../../dao/DTOs/cart.dto.js'
 import { Ticket } from '../../dao/factory.js'
 import TicketDTO from '../../dao/DTOs/ticket.dto.js'
 import passport from 'passport'
-import { authorization } from '../../utils.js'
+import { authorization, verifyToken } from '../../utils.js'
 
 const cartRouter = express.Router();
 const cartService = new Cart();
 const ticketService = new Ticket();
+
+// Obtener lista de carritos por ID de usuario (GET)
+cartRouter.get('/user/:uid',
+authorization('USER'),
+  passport.authenticate('jwt', { session: false }),
+async (req, res) => {
+  try {
+    const result = await cartService.getCarts(req.params.uid)
+    res.json({ status: "success", message: result })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ status: "error", message: "Internal Server Error" })
+  }
+})
 
 // Obtener lista de productos del carrito por ID (GET)
 cartRouter.get('/:id',
@@ -30,7 +44,10 @@ cartRouter.post('/',
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
     try {
-      const cart = new CartDTO(req?.body)
+      const insert = req.headers?.authorization? {...req?.body,...verifyToken(req.headers.authorization)}:null
+      // const result ={...req?.body,...user}
+      // console.log(result)
+      const cart = new CartDTO(insert)
       const result = await cartService.createCart(cart)
       res.json({ status: "success", message: result })
     } catch (error) {
@@ -79,13 +96,13 @@ cartRouter.delete('/:cid', async (req, res) => {
 })
 
 // Comprar Carrito
-cartRouter.put('/:cid/purchase',
+cartRouter.post('/:cid/purchase',
   authorization('USER'),
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
     try {
-      const ticket = new TicketDTO()
-      const result = await cartService.updateCart(req.params.cid, req.body)
+      // const ticket = new TicketDTO()
+      const result = await cartService.purchaseCart(req.params.cid)
       res.json({ status: "success", message: result })
     } catch (error) {
       console.log(error)
